@@ -14,6 +14,8 @@ header nav {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: fixed;
+  background: white;
 }
 header nav button {
   position: absolute;
@@ -23,25 +25,67 @@ header nav button {
 }
 header nav button i {
   font-size: 30px;
-  color: #80C8F0;
+  color: #45B3FC;
 }
 header nav a {
-  color: #80C8F0;
+  color: #45B3FC;
   text-decoration: none;
+}
+header nav .navMenu {
+  width: 100%;
+  height: 155px;
+  position: absolute;
+  left: 0;
+  top: -155px;
+  display: flex;
+  justify-content: center;
+  border-radius: 0 0 20px 20px;
+  background: #45B3FC;
+  transition: all 0.3s ease-in-out;
+}
+header nav .navMenu button {
+  position: absolute;
+  top: 19px;
+  left: 8px;
+  background: none;
+  border: 0;
+}
+header nav .navMenu button i {
+  font-size: 40px;
+  color: white;
+}
+header nav .navMenu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 25px;
+}
+header nav .navMenu ul li {
+  margin-bottom: 10px;
+}
+header nav .navMenu ul li a {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+header nav .navMenu.open {
+  top: 0;
 }
 
 main .hero {
   text-align: center;
+  padding-top: 100px;
 }
 main .hero h2 {
   font-size: 20px;
   color: #0E3043;
+  margin-bottom: 30px;
 }
 main .hero img {
   width: 100%;
   border-radius: 20px;
 }
-main .list-restaurant {
+main .listRestaurant {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,7 +93,12 @@ main .list-restaurant {
   padding-bottom: 10px;
   color: #0E3043;
 }
-main .list-restaurant .item {
+main .listRestaurant .item-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+main .listRestaurant .item-wrapper .item {
   width: 240px;
   height: 260px;
   background: white;
@@ -58,18 +107,18 @@ main .list-restaurant .item {
   position: relative;
   flex-direction: column;
   padding: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
-main .list-restaurant .item .pictureRating {
+main .listRestaurant .item-wrapper .item .pictureRating {
   position: relative;
   display: flex;
   justify-content: center;
 }
-main .list-restaurant .item .pictureRating img {
+main .listRestaurant .item-wrapper .item .pictureRating img {
   width: 100%;
   border-radius: 20px;
 }
-main .list-restaurant .item .pictureRating .rating {
+main .listRestaurant .item-wrapper .item .pictureRating .rating {
   text-align: center;
   color: white;
   position: absolute;
@@ -84,23 +133,87 @@ main .list-restaurant .item .pictureRating .rating {
   justify-content: center;
   font-weight: bold;
 }
-main .list-restaurant .item h4 {
+main .listRestaurant .item-wrapper .item h4 {
   margin-top: 10px;
   margin-bottom: 6px;
 }
-main .list-restaurant .item p {
+main .listRestaurant .item-wrapper .item p {
   margin: 0;
   font-size: 11px;
 }
-main .list-restaurant .item button {
+main .listRestaurant .item-wrapper .item button {
   width: 100%;
   height: 40px;
   border: 0;
   border-radius: 0px 0px 20px 20px;
-  background: #80C8F0;
+  background: #45B3FC;
   color: white;
   font-size: 14px;
   position: absolute;
   bottom: 0;
   left: 0;
+}
+main .popupMenuWrapper {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.575);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main .popupMenuWrapper .popupMenu {
+  width: 80%;
+  height: 80vh;
+  border-radius: 20px;
+  background: white;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.49);
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.49);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.49);
+}
+main .popupMenuWrapper .popupMenu .headerText {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: #45B3FC;
+  border-radius: 20px 20px 0 0;
+}
+main .popupMenuWrapper .popupMenu .headerText h3 {
+  text-align: center;
+  color: white;
+}
+main .popupMenuWrapper .popupMenu .menuItemWrapper {
+  width: 100%;
+  padding: 80px 20px 20px 20px;
+}
+main .popupMenuWrapper .popupMenu .menuItemWrapper .menuItem {
+  border-radius: 8px;
+  padding: 8px 15px 8px 15px;
+  background: #E8F7FF;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+main .popupMenuWrapper .popupMenu .menuItemWrapper .menuItem span {
+  font-size: 12px;
+  font-weight: 500;
+  color: #0E3043;
+}
+main .popupMenuWrapper .popupMenu button {
+  background: #FF1D4B;
+  border: 0;
+  position: absolute;
+  bottom: 10px;
+  width: 85%;
+  height: 40px;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 20px;
 }/*# sourceMappingURL=main.css.map */

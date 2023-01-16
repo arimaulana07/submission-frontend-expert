@@ -8,9 +8,25 @@
 <body>
   <header>
     <nav>
-      <button>
+      <button id="openNav">
         <i class="fa-solid fa-bars"></i>
       </button>
+      <div class="navMenu">
+        <button id="closeNav">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <ul>
+          <li>
+            <a href="index.html"> HOME </a>
+          </li>
+          <li>
+            <a href="#"> FAVOURITE </a>
+          </li>
+          <li>
+            <a href="#"> ABOUT ME </a>
+          </li>
+        </div>
+      </ul>
       <a href="index.html">
         <h1>
           House Of Food
@@ -25,27 +41,71 @@
       </h2>
       <img src="./images/heros/hero-image_2.jpg" alt="">
     </div>
-    <div class="list-restaurant">
+    <div class="listRestaurant">
       <h3>
         Top List Restaurant
       </h3>
-      <div class="item">
-        <div class="pictureRating">
-          <img src="https://restaurant-api.dicoding.dev/images/medium/41" alt="">
-          <div class="rating">
-            <i class="fa-solid fa-star"></i>&nbsp; 4.7
+      <div class="item-wrapper">
+        <div class="item">
+          <div class="pictureRating">
+            <img src="https://restaurant-api.dicoding.dev/images/medium/41" alt="">
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>&nbsp; 4.7
+            </div>
           </div>
+          <h4>
+            Bring Your Phone Cafe
+          </h4>
+          <p>
+            <i class="fa-solid fa-location-dot"></i> Kota Bandung
+          </p>
+          <button>MENU</button>
         </div>
-        <h4>
-          Bring Your Phone Cafe
-        </h4>
-        <p>
-          <i class="fa-solid fa-location-dot"></i> Kota Bandung
-        </p>
-        <button>MENU</button>
+        <div class="item">
+          <div class="pictureRating">
+            <img src="https://restaurant-api.dicoding.dev/images/medium/41" alt="">
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>&nbsp; 4.7
+            </div>
+          </div>
+          <h4>
+            Bring Your Phone Cafe
+          </h4>
+          <p>
+            <i class="fa-solid fa-location-dot"></i> Kota Bandung
+          </p>
+          <button>MENU</button>
+        </div>
       </div>
     </div>
-    
+    <div class="popupMenuWrapper">
+      <div class="popupMenu">
+        <div class="headerText">
+          <h3>MENU PRICELIST</h3>
+        </div>
+
+        <div class="menuItemWrapper">
+          <div class="menuItem">
+            <span class="menuName">
+              Nasi Goreng
+            </span>
+            <span class="menuPrice">
+              18.000 IDR
+            </span>
+          </div>
+          <div class="menuItem">
+            <span class="menuName">
+              Sate 10 Tusuk
+            </span>
+            <span class="menuPrice">
+              20.000 IDR
+            </span>
+          </div>
+        </div>
+
+        <button id="closePopup">CLOSE</button>
+      </div>
+    </div>
   </main>
 </body>
 </html>
