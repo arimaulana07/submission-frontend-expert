@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Restaurant Apps Starter Project</title>
 </head>
 <body>
+  <a href="#mainContent" id="skipToContent">Skip To Content</a>
   <header>
     <nav>
       <button id="openNav">
@@ -23,87 +24,55 @@
             <a href="#"> FAVOURITE </a>
           </li>
           <li>
-            <a href="#"> ABOUT ME </a>
+            <a href="https://www.instagram.com/__arimaulana/?hl=id"> ABOUT ME </a>
           </li>
-        </div>
-      </ul>
-      <a href="index.html">
+        </ul>
+      </div>
+      <a id="logo" href="index.html">
         <h1>
           House Of Food
         </h1>
       </a>
+      <div class="navMenuLarge">
+        <ul>
+          <li>
+            <a class="active" href="index.html"> HOME </a>
+          </li>
+          <li>
+            <a class="fav" href="#"> FAVORITE </a>
+          </li>
+          <li class="about">
+            <a class="about" href="https://www.instagram.com/__arimaulana/?hl=id"> ABOUT ME </a>
+          </li>
+        </ul>
+      </div>
     </nav>
   </header>
-  <main>
-    <div class="hero">
+  <div class="hero">
+    <h2>
+      A Place For All The Food Hunters
+    </h2>
+    <img src="./images/heros/hero-image_2.jpg" alt="banner">
+  </div>
+  <main id="mainContent">
+    <section class="listRestaurant">
       <h2>
-        A Place For All The Food Hunters
-      </h2>
-      <img src="./images/heros/hero-image_2.jpg" alt="">
-    </div>
-    <div class="listRestaurant">
-      <h3>
         Top List Restaurant
-      </h3>
-      <div class="itemWrapper">
-        <!-- <div class="item">
-          <div class="pictureRating">
-            <img src="https://restaurant-api.dicoding.dev/images/medium/41" alt="">
-            <div class="rating">
-              <i class="fa-solid fa-star"></i>&nbsp; 4.7
-            </div>
-          </div>
-          <h4>
-            Bring Your Phone Cafe
-          </h4>
-          <p>
-            <i class="fa-solid fa-location-dot"></i> Kota Bandung
-          </p>
-          <button id="btnMenu">MENU</button>
-        </div>
-        <div class="item">
-          <div class="pictureRating">
-            <img src="https://restaurant-api.dicoding.dev/images/medium/41" alt="">
-            <div class="rating">
-              <i class="fa-solid fa-star"></i>&nbsp; 4.7
-            </div>
-          </div>
-          <h4>
-            Bring Your Phone Cafe
-          </h4>
-          <p>
-            <i class="fa-solid fa-location-dot"></i> Kota Bandung
-          </p>
-          <button>MENU</button>
-        </div> -->
-      </div>
-    </div>
+      </h2>
+      <div class="itemWrapper"></div>
+    </section>
     <div class="popupMenuWrapper">
       <div class="popupMenu">
         <div class="headerText">
           <h3>MENU PRICELIST</h3>
         </div>
-        <div class="menuItemWrapper">
-          <div class="menuItem">
-            <span class="menuName">
-              Nasi Goreng
-            </span>
-            <span class="menuPrice">
-              18.000 IDR
-            </span>
-          </div>
-          <div class="menuItem">
-            <span class="menuName">
-              Sate 10 Tusuk
-            </span>
-            <span class="menuPrice">
-              20.000 IDR
-            </span>
-          </div>
-        </div>
-        <button id="closePopup">CLOSE</button>
+        <div class="menuItemWrapper"></div>
+        <button id="closePopup" class="closePopup">CLOSE</button>
       </div>
     </div>
   </main>
+  <footer>
+    <p>Copyright © 2022 - House Of Food</p>
+  </footer>
 </body>
 </html>

@@ -6,6 +6,25 @@ body {
   box-sizing: border-box;
 }
 
+a#skipToContent {
+  position: absolute;
+  top: -100px;
+  font-weight: 500;
+  left: 20px;
+  text-decoration: none;
+  color: white;
+  background: #45B3FC;
+  z-index: 99;
+  padding: 20px;
+}
+a#skipToContent:focus {
+  top: 20px;
+}
+
+button {
+  cursor: pointer;
+}
+
 header nav {
   width: 100%;
   height: 80px;
@@ -16,13 +35,15 @@ header nav {
   justify-content: center;
   position: fixed;
   background: white;
-  z-index: 99;
+  z-index: 98;
 }
 header nav button {
   position: absolute;
   left: 8px;
   background: white;
   border: 0px;
+  width: 44px;
+  height: 44px;
 }
 header nav button i {
   font-size: 30px;
@@ -32,15 +53,19 @@ header nav a {
   color: #45B3FC;
   text-decoration: none;
 }
+header nav .navMenuLarge {
+  display: none;
+}
 header nav .navMenu {
   width: 100%;
-  height: 155px;
+  height: auto;
   position: absolute;
   left: 0;
-  top: -155px;
+  top: -200px;
   display: flex;
   justify-content: center;
   border-radius: 0 0 20px 20px;
+  padding-bottom: 10px;
   background: #45B3FC;
   transition: all 0.3s ease-in-out;
 }
@@ -59,10 +84,12 @@ header nav .navMenu ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  margin-top: 25px;
+  margin-top: 18px;
 }
 header nav .navMenu ul li {
-  margin-bottom: 10px;
+  height: 44px;
+  display: flex;
+  align-items: center;
 }
 header nav .navMenu ul li a {
   color: white;
@@ -73,41 +100,43 @@ header nav .navMenu.open {
   top: 0;
 }
 
-main .hero {
+.hero {
   text-align: center;
   padding-top: 100px;
 }
-main .hero h2 {
-  font-size: 20px;
+.hero h2 {
   color: #0E3043;
   margin-bottom: 30px;
+  padding: 0px 15px 0px 15px;
 }
-main .hero img {
+.hero img {
   width: 100%;
-  border-radius: 20px;
 }
+
 main .listRestaurant {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #E8F7FF;
+  background: #ceeafa;
   padding-bottom: 10px;
   color: #0E3043;
+  margin-top: -30px;
+  padding-top: 30px;
 }
 main .listRestaurant .itemWrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 main .listRestaurant .itemWrapper .item {
-  width: 240px;
-  height: 260px;
+  width: 80%;
+  height: auto;
   background: white;
   border-radius: 20px;
   display: flex;
   position: relative;
   flex-direction: column;
-  padding: 10px;
+  padding: 20px;
   margin-bottom: 25px;
 }
 main .listRestaurant .itemWrapper .item .pictureRating {
@@ -117,6 +146,9 @@ main .listRestaurant .itemWrapper .item .pictureRating {
 }
 main .listRestaurant .itemWrapper .item .pictureRating img {
   width: 100%;
+  aspect-ratio: 1/0.7;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 20px;
 }
 main .listRestaurant .itemWrapper .item .pictureRating .rating {
@@ -142,14 +174,22 @@ main .listRestaurant .itemWrapper .item p {
   margin: 0;
   font-size: 11px;
 }
+main .listRestaurant .itemWrapper .item p.description {
+  font-size: 13px;
+  margin-top: 12px;
+  line-height: 17px;
+  margin-bottom: 50px;
+}
 main .listRestaurant .itemWrapper .item button {
   width: 100%;
-  height: 40px;
+  height: 44px;
+  font-weight: bold;
   border: 0;
   border-radius: 0px 0px 20px 20px;
   background: #45B3FC;
   color: white;
   font-size: 14px;
+  letter-spacing: 3px;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -157,6 +197,7 @@ main .listRestaurant .itemWrapper .item button {
 main .popupMenuWrapper {
   width: 100%;
   height: 100vh;
+  z-index: 99;
   position: fixed;
   top: 0;
   left: 0;
@@ -193,6 +234,11 @@ main .popupMenuWrapper .popupMenu .menuItemWrapper {
   width: 100%;
   padding: 80px 20px 20px 20px;
 }
+main .popupMenuWrapper .popupMenu .menuItemWrapper h4 {
+  color: #0E3043;
+  margin: 0 0 20px 0;
+  text-align: center;
+}
 main .popupMenuWrapper .popupMenu .menuItemWrapper .menuItem {
   border-radius: 8px;
   padding: 8px 15px 8px 15px;
@@ -212,7 +258,7 @@ main .popupMenuWrapper .popupMenu button {
   position: absolute;
   bottom: 10px;
   width: 85%;
-  height: 40px;
+  height: 44px;
   color: white;
   font-weight: bold;
   font-size: 14px;
@@ -220,4 +266,95 @@ main .popupMenuWrapper .popupMenu button {
 }
 main .popupMenuWrapper.open {
   display: flex;
+}
+
+footer {
+  background: #ceeafa;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+footer p {
+  margin: 0;
+  color: #0E3043;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+@media screen and (min-width: 500px) {
+  .popupMenuWrapper .popupMenu {
+    max-width: 400px;
+  }
+}
+@media screen and (min-width: 600px) {
+  #openNav {
+    display: none;
+    visibility: hidden;
+  }
+  .navMenu {
+    visibility: hidden;
+  }
+  header nav {
+    justify-content: start;
+  }
+  header nav a#logo {
+    margin-left: 20px;
+  }
+  header nav .navMenuLarge {
+    display: block;
+    position: absolute;
+    right: 0;
+  }
+  header nav .navMenuLarge ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  header nav .navMenuLarge ul li {
+    margin-left: 10px;
+  }
+  header nav .navMenuLarge ul li a {
+    color: #0E3043;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 13px 18px 13px 18px;
+    border-radius: 20px;
+  }
+  header nav .navMenuLarge ul li a:hover {
+    background: #ceeafa;
+    border-radius: 17px;
+  }
+  header nav .navMenuLarge ul li a.active {
+    background: #ceeafa;
+    font-weight: 600;
+  }
+  header nav .navMenuLarge ul li.about {
+    margin-right: 10px;
+  }
+}
+@media screen and (min-width: 700px) {
+  main .listRestaurant .itemWrapper .item {
+    width: 38%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .hero img {
+    min-width: 1000px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    aspect-ratio: 1/0.3;
+  }
+  main .listRestaurant .itemWrapper {
+    max-width: 1000px;
+  }
+  main .listRestaurant .itemWrapper .item {
+    width: 27%;
+  }
 }/*# sourceMappingURL=main.css.map */
