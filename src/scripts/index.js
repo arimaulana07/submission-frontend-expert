@@ -14,9 +14,9 @@ const popupMenuWrapper = document.querySelector('.popupMenuWrapper');
 const body = document.querySelector('body');
 const itemWrapper = document.querySelector('.itemWrapper');
 
-data.restaurants.forEach((item, index) => {
+data.restaurants.forEach( (item, index) => {
   itemWrapper.innerHTML += `
-    <article class="item" id="${index}">
+    <article class="item" tabindex="0" id="article-${index}">
       <div class="pictureRating">
         <img src="${item.pictureId}" alt="picture of ${item.name} restaurant">
         <div class="rating">
@@ -35,7 +35,28 @@ data.restaurants.forEach((item, index) => {
   `
 });
 
-const btnMenu = document.querySelectorAll('.btnMenu')
+const articles = document.querySelectorAll('article');
+articles.forEach(article => {
+  const articleAction = document.getElementById(article.id);
+  articleAction.addEventListener('keypress', event => {
+    const btnId = event.target.querySelector('.btnMenu').id;
+    if (event.key === 'Enter') {
+      renderPopupMenu(btnId);
+      body.style.overflow = "hidden";
+
+      const keyboardfocusableElements = document.querySelectorAll(
+        'a[href], input, textarea, select, details, article, button:not(.closePopup)'
+      );
+      keyboardfocusableElements.forEach(item => {
+        item.setAttribute('tabindex', '-1')
+      })
+
+      event.stopPropagation();
+    }
+  });
+});
+
+const btnMenu = document.querySelectorAll('.btnMenu');
 btnMenu.forEach(btn => {
   const btnAction = document.getElementById(btn.id);
   btnAction.addEventListener('click', event => {
@@ -43,7 +64,7 @@ btnMenu.forEach(btn => {
     body.style.overflow = "hidden";
 
     const keyboardfocusableElements = document.querySelectorAll(
-      'a[href], input, textarea, select, details, button:not(.closePopup)'
+      'a[href], input, textarea, select, details, article, button:not(.closePopup)'
     );
     keyboardfocusableElements.forEach(item => {
       item.setAttribute('tabindex', '-1')
@@ -97,10 +118,10 @@ closeBtnMenu?.addEventListener('click', event => {
   body.style.overflow = "auto"; 
   
   const keyboardfocusableElements = document.querySelectorAll(
-    'a[href], input, textarea, select, details, button:not(.closePopup)'
+    'a[href], input, textarea, select, details, article, button:not(.closePopup)'
   );
   keyboardfocusableElements.forEach(item => {
-    item.removeAttribute('tabindex')
+    item.tagName === 'ARTICLE' ? item.setAttribute('tabindex', '0') : item.removeAttribute('tabindex')
   });
 
   event.stopPropagation();

@@ -94,12 +94,13 @@ header {
         margin-top: 18px;
         li {
           height: 44px;
-          display: flex;
-          align-items: center;
           a {
+            min-height: 44px;
             color: white;
             font-size: 20px;
             font-weight: bold;
+            display: flex;
+            align-items: center;
           }
         }
       }

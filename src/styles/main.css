@@ -88,13 +88,14 @@ header nav .navMenu ul {
 }
 header nav .navMenu ul li {
   height: 44px;
-  display: flex;
-  align-items: center;
 }
 header nav .navMenu ul li a {
+  min-height: 44px;
   color: white;
   font-size: 20px;
   font-weight: bold;
+  display: flex;
+  align-items: center;
 }
 header nav .navMenu.open {
   top: 0;
