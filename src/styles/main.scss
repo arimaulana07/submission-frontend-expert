@@ -344,18 +344,21 @@ footer {
           list-style: none;
           padding: 0;
           margin: 0;
+          min-height: 45px;
           li {
             margin-left: 10px;
+            min-height: 45px;
             a {
               color: $secondaryColor;
               font-weight: 500;
               font-size: 14px;
-              padding:13px 18px 13px 18px;
-              border-radius: 20px;
-              
+              padding:0px 18px 0px 18px;
+              border-radius: 25px;
+              height: 46px;
+              display: flex;
+              align-items: center;
               &:hover {
                 background: $bgColor;
-                border-radius: 17px;
               }
             }
 

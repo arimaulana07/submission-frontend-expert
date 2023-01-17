@@ -311,20 +311,24 @@ footer p {
     list-style: none;
     padding: 0;
     margin: 0;
+    min-height: 45px;
   }
   header nav .navMenuLarge ul li {
     margin-left: 10px;
+    min-height: 45px;
   }
   header nav .navMenuLarge ul li a {
     color: #0E3043;
     font-weight: 500;
     font-size: 14px;
-    padding: 13px 18px 13px 18px;
-    border-radius: 20px;
+    padding: 0px 18px 0px 18px;
+    border-radius: 25px;
+    height: 46px;
+    display: flex;
+    align-items: center;
   }
   header nav .navMenuLarge ul li a:hover {
     background: #ceeafa;
-    border-radius: 17px;
   }
   header nav .navMenuLarge ul li a.active {
     background: #ceeafa;
