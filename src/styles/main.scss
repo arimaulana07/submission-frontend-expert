@@ -1,12 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&display=swap');
 $primaryColor: #45B3FC;
 $bgColor: #ceeafa;
 $secondaryColor: #0E3043;
 
+$clickableComponentColor: #A605AD;
+$yellowColor: #FFA825;
+$fontColorPrimary: black;
+$fontColorSecondary: #B2B2B2;
+
+@mixin shadowComponent {
+  box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.49);
+-webkit-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.49);
+-moz-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.49);
+  &:hover {
+    box-shadow: 2px 3px 5px 0px $clickableComponentColor;
+-webkit-box-shadow: 2px 3px 5px 0px $clickableComponentColor;
+-moz-box-shadow: 2px 3px 5px 0px $clickableComponentColor;
+  }
+}
+
 body{
   margin:0;
   padding:0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
 }
 
@@ -51,12 +67,12 @@ header {
       height: 44px;
       i {
         font-size: 30px;
-        color: $primaryColor;
+        color: $clickableComponentColor;
       }
     }
     
     a {
-      color:$primaryColor;
+      color:$clickableComponentColor;
       text-decoration: none;  
     }
 
@@ -74,7 +90,7 @@ header {
       justify-content: center;
       border-radius: 0 0 20px 20px;
       padding-bottom: 10px;
-      background: $primaryColor;
+      background: $clickableComponentColor;
       transition: all 0.3s ease-in-out;
       button {
         position: absolute;
@@ -117,7 +133,7 @@ header {
   text-align: center;
   padding-top: 100px;
   h2 {
-    color: $secondaryColor;
+    color: $fontColorPrimary;
     margin-bottom: 30px;
     padding: 0px 15px 0px 15px;
   }
@@ -134,9 +150,9 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: $bgColor;
+    background: white;
     padding-bottom:10px;
-    color: $secondaryColor;
+    color: $fontColorPrimary;
     margin-top: -30px;
     padding-top: 30px;
     .itemWrapper {
@@ -144,15 +160,16 @@ main {
        flex-wrap: wrap;
        justify-content: space-evenly;
       .item {
-        width:80%;
+        width:70%;
         height:auto;
         background: white;
         border-radius: 20px;
         display: flex;
         position: relative;
         flex-direction: column;
-        padding:20px;
-        margin-bottom: 25px;
+        padding:20px 20px 60px 20px;
+        margin-bottom: 40px;
+        @include shadowComponent();
   
         .pictureRating {
           position: relative;
@@ -172,7 +189,7 @@ main {
             bottom:0;
             width:120px;
             height:25px;
-            background: #57FC45;
+            background: $yellowColor;
             border-radius: 20px 20px 0 0;
             font-size: 11px;
             display: flex;
@@ -202,7 +219,7 @@ main {
           font-weight: bold;
           border: 0;
           border-radius: 0px 0px 20px 20px;
-          background: $primaryColor;
+          background: $clickableComponentColor;
           color:white;
           font-size: 14px;
           letter-spacing: 3px;
@@ -298,12 +315,12 @@ main {
 
 //==== FOOTER ===//
 footer {
-  background: $bgColor;
+  background: $yellowColor;
   padding-top: 10px;
   padding-bottom: 20px;
   p {
     margin: 0;
-    color:$secondaryColor;
+    color:white;
     text-align: center;
     font-size: 17px;
     font-weight: 500;
@@ -349,7 +366,7 @@ footer {
             margin-left: 10px;
             min-height: 45px;
             a {
-              color: $secondaryColor;
+              color: $clickableComponentColor;
               font-weight: 500;
               font-size: 14px;
               padding:0px 18px 0px 18px;
@@ -358,12 +375,14 @@ footer {
               display: flex;
               align-items: center;
               &:hover {
-                background: $bgColor;
+                background: $clickableComponentColor;
+                color:white;
               }
             }
 
             a.active {
-              background: $bgColor;
+              background: $clickableComponentColor;
+              color:$yellowColor;
               font-weight: 600;
             }
           }
