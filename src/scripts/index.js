@@ -2,38 +2,10 @@ import 'regenerator-runtime'; /* for async await transpile */
 import '../styles/main.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import data from '../DATA.json';
-import additionalData from '../additional-data.json';
+import App from './views/app';
 
-console.log('Hello Coders! :)');
-
-const openNav = document.querySelector('#openNav');
-const closeNavBtn = document.querySelector('#closeNav');
-const navMenu = document.querySelector('.navMenu');
-const mainElement = document.querySelector('main');
-const closeBtnMenu = document.querySelector('#closePopup');
-const popupMenuWrapper = document.querySelector('.popupMenuWrapper');
 const body = document.querySelector('body');
 const itemWrapper = document.querySelector('.itemWrapper');
-
-const renderPopupMenu = (id) => {
-  const menuItemWrapper = document.querySelector('.menuItemWrapper');
-  menuItemWrapper.innerHTML = '';
-  const restaurantName = data.restaurants.find((item) => item.id === id).name;
-  menuItemWrapper.innerHTML = `<h4>${restaurantName}</h4>`;
-  additionalData.menu.forEach((item) => {
-    menuItemWrapper.innerHTML += `
-      <div class="menuItem">
-        <span class="menuName">
-          ${item.name}
-        </span>
-        <span class="menuPrice">
-          ${item.price}
-        </span>
-      </div>
-    `;
-  });
-  popupMenuWrapper.classList.add('open');
-};
 
 data.restaurants.forEach((item, index) => {
   itemWrapper.innerHTML += `
@@ -55,32 +27,10 @@ data.restaurants.forEach((item, index) => {
   `;
 });
 
-const articles = document.querySelectorAll('article');
-articles.forEach((article) => {
-  const articleAction = document.getElementById(article.id);
-  articleAction.addEventListener('keypress', (event) => {
-    const btnId = event.target.querySelector('.btnMenu').id;
-    if (event.key === 'Enter') {
-      renderPopupMenu(btnId);
-      body.style.overflow = 'hidden';
-
-      const keyboardfocusableElements = document.querySelectorAll(
-        'a[href], input, textarea, select, details, article, button:not(.closePopup)',
-      );
-      keyboardfocusableElements.forEach((item) => {
-        item.setAttribute('tabindex', '-1');
-      });
-
-      event.stopPropagation();
-    }
-  });
-});
-
 const btnMenu = document.querySelectorAll('.btnMenu');
 btnMenu.forEach((btn) => {
   const btnAction = document.getElementById(btn.id);
   btnAction.addEventListener('click', (event) => {
-    renderPopupMenu(event.target.id);
     body.style.overflow = 'hidden';
 
     const keyboardfocusableElements = document.querySelectorAll(
@@ -94,32 +44,17 @@ btnMenu.forEach((btn) => {
   });
 });
 
-openNav?.addEventListener('click', (event) => {
-  navMenu.classList.add('open');
-  event.stopPropagation();
+const app = new App({
+  openNav: document.querySelector('#openNav'),
+  closeNav: document.querySelector('#closeNav'),
+  navMenu: document.querySelector('.navMenu'),
+  content: document.querySelector('main'),
 });
 
-closeNavBtn?.addEventListener('click', (event) => {
-  navMenu.classList.remove('open');
-  event.stopPropagation();
+window.addEventListener('hashchange', () => {
+  app.renderPage();
 });
 
-mainElement?.addEventListener('click', (event) => {
-  navMenu.classList.remove('open');
-  event.stopPropagation();
-});
-
-closeBtnMenu?.addEventListener('click', (event) => {
-  popupMenuWrapper.classList.remove('open');
-  body.style.overflow = 'auto';
-
-  const keyboardfocusableElements = document.querySelectorAll(
-    'a[href], input, textarea, select, details, article, button:not(.closePopup)',
-  );
-  keyboardfocusableElements.forEach((item) => {
-    // eslint-disable-next-line no-unused-expressions
-    item.tagName === 'ARTICLE' ? item.setAttribute('tabindex', '0') : item.removeAttribute('tabindex');
-  });
-
-  event.stopPropagation();
+window.addEventListener('load', () => {
+  app.renderPage();
 });
