@@ -25,26 +25,31 @@ button {
   cursor: pointer;
 }
 
-button.favButton {
+.likeBtnWrapper {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+}
+
+button.likeBtn {
   width: 67px;
   height: 67px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: white;
   border: 3px solid #A605AD;
-  position: fixed;
-  right: 15px;
-  bottom: 15px;
   z-index: 99;
 }
-button.favButton i {
+button.likeBtn i {
   font-size: 30px;
   color: #FFA825;
 }
-button.favButton.favorited {
+button.likeBtn.favorited {
   background: #A605AD;
+}
+button.likeBtn.favorite {
+  background: white;
 }
 
 header nav {

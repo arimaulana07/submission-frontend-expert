@@ -45,18 +45,20 @@ button {
   cursor: pointer;
 }
 
-button.favButton {
+.likeBtnWrapper {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+}
+
+button.likeBtn {
   width: 67px;
   height: 67px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: white;
   border: 3px solid $clickableComponentColor;
-  position: fixed;
-  right: 15px;
-  bottom: 15px;
   z-index: 99;
   i {
     font-size: 30px;
@@ -65,6 +67,10 @@ button.favButton {
 
   &.favorited {
     background: $clickableComponentColor;
+  }
+
+  &.favorite {
+    background:white ;
   }
 }
 

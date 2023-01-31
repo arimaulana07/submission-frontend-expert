@@ -131,4 +131,15 @@ const createRestaurantDetail = (restaurant) => `
     </div>
 `;
 
-export { createRestaurantDetail, createRestaurantItemTemplate, createDetailRestaurantReviewTemplate };
+const createLikeButtonTemplate = (className) => `
+    <button class="likeBtn ${className}">
+        <i class="fa-solid fa-heart favorited"></i> 
+    </button>
+`;
+
+export {
+  createRestaurantDetail,
+  createRestaurantItemTemplate,
+  createDetailRestaurantReviewTemplate,
+  createLikeButtonTemplate,
+};

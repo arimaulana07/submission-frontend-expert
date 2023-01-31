@@ -2,12 +2,14 @@
 import RestaurantResource from '../../data/restaurant-source';
 import UrlParser from '../../routes/url-parser';
 import PostNewReview from '../../utils/post-new-review';
-import { createRestaurantDetail } from '../templates/template-creator';
+import LikeButtonInitiator from '../../utils/like-button-initiator';
+import { createRestaurantDetail, createLikeButtonTemplate } from '../templates/template-creator';
 
 const Detail = {
   async render() {
     return `
         <section id="restaurantDetail" class="restaurantDetail"></section>
+        <div class="likeBtnWrapper"></div>
       `;
   },
 
@@ -16,7 +18,11 @@ const Detail = {
     const restaurant = await RestaurantResource.detailRestaurant(url.id);
     const restaurantContainer = document.querySelector('#restaurantDetail');
     restaurantContainer.innerHTML += createRestaurantDetail(restaurant);
-
+    document.querySelector('.likeBtnWrapper').innerHTML += createLikeButtonTemplate();
+    LikeButtonInitiator.init({
+      likeButtonWrapper: document.querySelector('.likeBtnWrapper'),
+      restaurant,
+    });
     // const favButton = document.querySelector('.favButton');
     // const icLove = document.querySelector('.favButton > i');
     // favButton.addEventListener('click', (e) => e.target.classList.toggle('favorited'));
