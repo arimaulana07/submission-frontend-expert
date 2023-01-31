@@ -25,6 +25,28 @@ button {
   cursor: pointer;
 }
 
+button.favButton {
+  width: 67px;
+  height: 67px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 3px solid #A605AD;
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  z-index: 99;
+}
+button.favButton i {
+  font-size: 30px;
+  color: #FFA825;
+}
+button.favButton.favorited {
+  background: #A605AD;
+}
+
 header nav {
   width: 100%;
   height: 80px;
@@ -189,7 +211,7 @@ main .listRestaurant .itemWrapper .item p.description {
   line-height: 17px;
   margin-bottom: 50px;
 }
-main .listRestaurant .itemWrapper .item button {
+main .listRestaurant .itemWrapper .item a {
   width: 100%;
   height: 44px;
   font-weight: bold;
@@ -198,10 +220,15 @@ main .listRestaurant .itemWrapper .item button {
   background: #A605AD;
   color: white;
   font-size: 14px;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   position: absolute;
   bottom: 0;
   left: 0;
+  text-decoration: none;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 main .popupMenuWrapper {
   width: 100%;
@@ -275,6 +302,268 @@ main .popupMenuWrapper .popupMenu button {
 }
 main .popupMenuWrapper.open {
   display: flex;
+}
+
+.restaurantDetail {
+  padding: 110px 19px 30px 19px;
+  height: auto;
+}
+.restaurantDetail .pictureRating {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.restaurantDetail .pictureRating img {
+  width: 100%;
+  aspect-ratio: 1/0.7;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 20px;
+}
+.restaurantDetail .pictureRating .rating {
+  text-align: center;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  width: 140px;
+  height: 30px;
+  background: #FFA825;
+  border-radius: 20px 20px 0 0;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+.restaurantDetail .restaurantInfo h1.restaurantName {
+  font-size: 30px;
+  margin-top: 15px;
+  margin-bottom: 8px;
+}
+.restaurantDetail .restaurantInfo p, .restaurantDetail .restaurantInfo span {
+  color: #B2B2B2;
+  font-size: 12px;
+}
+.restaurantDetail .restaurantInfo p.restaurantAddress {
+  margin: 0;
+  padding: 0;
+}
+.restaurantDetail .restaurantInfo .categories {
+  margin-top: 15px;
+}
+.restaurantDetail .restaurantInfo .categories span {
+  border: 0.4px solid #B2B2B2;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+.restaurantDetail .restaurantContentWrapper {
+  margin-top: 15px;
+  min-height: 500px;
+}
+.restaurantDetail .restaurantContentWrapper .contentNavigation {
+  display: flex;
+  justify-content: space-around;
+}
+.restaurantDetail .restaurantContentWrapper .contentNavigation button {
+  background: none;
+  border: 0;
+  height: 44px;
+  min-width: 44px;
+  font-size: 12px;
+  color: #B2B2B2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  position: relative;
+}
+.restaurantDetail .restaurantContentWrapper .contentNavigation button.active {
+  font-weight: 600;
+  color: #A605AD;
+}
+.restaurantDetail .restaurantContentWrapper .contentNavigation button.active:after {
+  content: "";
+  width: 58px;
+  height: 2px;
+  background: #A605AD;
+  position: absolute;
+  bottom: -1px;
+}
+.restaurantDetail .restaurantContentWrapper .contentNavigation button:after {
+  content: "";
+  width: 58px;
+  height: 2px;
+  background: #B2B2B2;
+  position: absolute;
+  bottom: -1px;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantContent {
+  display: none;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantMenu {
+  display: block;
+  margin-top: 20px;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantMenu .menus {
+  box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  -webkit-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  -moz-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  margin-bottom: 20px;
+  border: 0.5px solid black;
+  border-radius: 20px;
+  padding: 24px;
+  overflow: hidden;
+  height: 40px;
+  transition: all 0.1s ease-in-out;
+  position: relative;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantMenu .menus:hover {
+  box-shadow: 2px 3px 5px 0px #A605AD;
+  -webkit-box-shadow: 2px 3px 5px 0px #A605AD;
+  -moz-box-shadow: 2px 3px 5px 0px #A605AD;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantMenu .menus button {
+  background: none;
+  border: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  position: relative;
+  font-size: 20px;
+  font-weight: bold;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantMenu .menus i {
+  color: #A605AD;
+  position: absolute;
+  right: 0;
+  font-size: 20px;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantMenu .menus i.hidden {
+  display: none;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantMenu .menus .menuBtn {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantMenu .menus .itemMenu {
+  margin-top: 20px;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantMenu .menus ul {
+  margin: 0;
+  padding: 20px;
+  padding-top: 0px;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantMenu .menus ul li {
+  margin: 0;
+  padding: 0;
+  margin-top: 5px;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantMenu .menus.active {
+  border: 0.5px solid #A605AD;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantDescription p {
+  box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  -webkit-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  -moz-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  margin-top: 20px;
+  padding: 21px;
+  border-radius: 20px;
+  border: 0.5px solid black;
+  font-size: 12px;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantDescription p:hover {
+  box-shadow: 2px 3px 5px 0px #A605AD;
+  -webkit-box-shadow: 2px 3px 5px 0px #A605AD;
+  -moz-box-shadow: 2px 3px 5px 0px #A605AD;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantReviews {
+  margin-top: 20px;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantReviews .reviewItem {
+  box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  -webkit-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  -moz-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  padding: 24px;
+  border: 0.5px solid black;
+  border-radius: 20px;
+  position: relative;
+  min-height: 155px;
+  margin-bottom: 20px;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantReviews .reviewItem:hover {
+  box-shadow: 2px 3px 5px 0px #A605AD;
+  -webkit-box-shadow: 2px 3px 5px 0px #A605AD;
+  -moz-box-shadow: 2px 3px 5px 0px #A605AD;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantReviews .reviewItem h2 {
+  margin: 0;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantReviews .reviewItem p.reviewDate {
+  font-size: 12px;
+  color: #B2B2B2;
+  position: absolute;
+  right: 12px;
+  bottom: 0;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantReviews .writeReview {
+  margin-top: 45px;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantReviews .writeReview label {
+  font-size: 12px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 6px;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantReviews .writeReview input {
+  box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  -webkit-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  -moz-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 35px;
+  border-radius: 20px;
+  padding: 0px 20px 0px 20px;
+  border: 0.5px solid #B2B2B2;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantReviews .writeReview input:hover {
+  box-shadow: 2px 3px 5px 0px #A605AD;
+  -webkit-box-shadow: 2px 3px 5px 0px #A605AD;
+  -moz-box-shadow: 2px 3px 5px 0px #A605AD;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantReviews .writeReview input:focus {
+  border: 2px solid #A605AD;
+  outline: #A605AD;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantReviews .writeReview textarea {
+  box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  -webkit-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  -moz-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantReviews .writeReview textarea:hover {
+  box-shadow: 2px 3px 5px 0px #A605AD;
+  -webkit-box-shadow: 2px 3px 5px 0px #A605AD;
+  -moz-box-shadow: 2px 3px 5px 0px #A605AD;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantReviews .writeReview textarea:focus {
+  border: 2px solid #A605AD;
+  outline: #A605AD;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantReviews .writeReview button {
+  border: 0px;
+  height: 44px;
+  width: 100px;
+  border-radius: 20px;
+  background: #A605AD;
+  color: white;
+  font-weight: bold;
+  margin-top: 10px;
 }
 
 footer {

@@ -9,7 +9,20 @@ class RestaurantResource {
 
   static async detailRestaurant(id) {
     const response = await fetch(API_ENDPOINT.DETAIL(id));
-    return response.json();
+    const responseJson = await response.json();
+    return responseJson.restaurant;
+  }
+
+  static async postReview(review) {
+    const response = await fetch(API_ENDPOINT.POST_REVIEW, {
+      method: 'POST',
+      body: JSON.stringify(review),
+      headers: {
+        'Content-type': 'application/json; application/x-www-form-urlencoded',
+      },
+    });
+    const responseJson = await response.json();
+    return responseJson;
   }
 }
 

@@ -45,6 +45,29 @@ button {
   cursor: pointer;
 }
 
+button.favButton {
+  width: 67px;
+  height: 67px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 3px solid $clickableComponentColor;
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  z-index: 99;
+  i {
+    font-size: 30px;
+    color: $yellowColor;
+  }
+
+  &.favorited {
+    background: $clickableComponentColor;
+  }
+}
+
 //==== HEADER ====//
 header {
   nav {
@@ -213,7 +236,7 @@ main {
           line-height: 17px;
           margin-bottom: 50px;
         }
-        button {
+        a {
           width:100%;
           height: 44px;
           font-weight: bold;
@@ -222,10 +245,15 @@ main {
           background: $clickableComponentColor;
           color:white;
           font-size: 14px;
-          letter-spacing: 3px;
+          letter-spacing: 2px;
           position: absolute;
           bottom:0;
           left:0;
+          text-decoration: none;
+          display: flex;
+          text-align: center;
+          justify-content: center;
+          align-items: center;
         }
       }
     }
@@ -311,6 +339,244 @@ main {
     display: flex;
   }
 
+}
+
+//=====================//
+//==== DETAIL PAGE ====//
+//====================//
+
+.restaurantDetail {
+    padding: 110px 19px 30px 19px;
+    height:auto;
+    .pictureRating {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        img {
+          width: 100%;
+          aspect-ratio: 1/0.7;
+          object-fit: cover;
+          border-radius: 20px;
+        }
+        
+        .rating {
+          text-align: center;
+          color:white;
+          position: absolute;
+          bottom:0;
+          width:140px;
+          height:30px;
+          background: $yellowColor;
+          border-radius: 20px 20px 0 0;
+          font-size: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: bold;
+        }
+    }
+    .restaurantInfo {
+        h1.restaurantName {
+            font-size: 30px;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+        p, span {
+            color: $fontColorSecondary;
+            font-size: 12px;
+        }
+        p.restaurantAddress {
+            margin: 0;
+            padding: 0;
+        }
+        .categories {
+            margin-top: 15px;
+            span {
+                border: 0.4px solid $fontColorSecondary;
+                padding: 5px 12px;
+                border-radius: 20px;
+            }
+        }
+    }
+    .restaurantContentWrapper {
+        margin-top: 15px;
+        min-height: 500px;
+        .contentNavigation {    
+            display: flex;
+            justify-content: space-around;
+            button {
+                background: none;
+                border: 0;
+                height:44px;
+                min-width:44px;
+                font-size: 12px;
+                color: $fontColorSecondary;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-weight: bold;
+                // border-bottom:2px solid $fontColorSecondary;
+                position: relative;
+                &.active {
+                    font-weight: 600;
+                    color: $clickableComponentColor;
+                    // border-bottom:2px solid $clickableComponentColor;
+                    &:after {
+                        content:'';
+                        width:58px;
+                        height: 2px;
+                        background: $clickableComponentColor;
+                        position: absolute;
+                        bottom:-1px;
+                    }
+                }
+                &:after {
+                    content:'';
+                    width:58px;
+                    height: 2px;
+                    background: $fontColorSecondary;
+                    position: absolute;
+                    bottom:-1px;
+                }
+            }
+        }
+        .restaurantContent {
+            display: none;
+        }
+        .restaurantMenu {
+            display: block;
+            margin-top: 20px;
+            .menus {
+                @include shadowComponent();
+                margin-bottom: 20px;
+                border: 0.5px solid black;
+                border-radius: 20px;
+                padding: 24px;
+                overflow: hidden;
+                height:40px ;
+                transition:all  0.1s ease-in-out;
+                position: relative;
+                button {
+                    background: none;
+                    border: 0;
+                    margin: 0;
+                    display: flex;
+                    align-items: center;
+                    height:40px;
+                    position: relative;
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+                i {
+                    color: $clickableComponentColor;
+                    position: absolute;
+                    right: 0;
+                    font-size: 20px;
+                    &.hidden {
+                        display: none;
+                    }
+                }
+                .menuBtn {
+                    display: flex;
+                    align-items: center;
+                    position: relative;
+                }
+                .itemMenu {
+                    margin-top: 20px;
+                }
+                ul {
+                    margin: 0;
+                    padding: 20px;
+                    padding-top: 0px;
+                    li {
+                        // list-style: none;
+                        margin: 0;
+                        padding: 0;
+                        margin-top: 5px;
+                    }
+                }
+                &.active {
+                    border: 0.5px solid $clickableComponentColor;
+                }
+            }
+        }
+        .restaurantDescription {
+          p {
+            @include shadowComponent();
+            margin-top: 20px;
+            padding: 21px;
+            border-radius: 20px;
+            border: 0.5px solid black;
+            font-size: 12px;
+          }
+        }
+        .restaurantReviews {
+            margin-top: 20px;
+            .reviewItem {
+                @include shadowComponent();
+                padding: 24px;
+                border: 0.5px solid black;
+                border-radius: 20px;
+                position: relative;
+                min-height: 155px;
+                margin-bottom: 20px;
+                h2{
+                    margin:0;
+                }
+                p.reviewDate {
+                    font-size: 12px;
+                    color: $fontColorSecondary;
+                    position: absolute;
+                    right: 12px;
+                    bottom: 0;
+                }
+            }
+            .writeReview {
+                margin-top: 45px;
+                label {
+                    font-size: 12px;
+                    font-weight: bold;
+                    display: block;
+                    margin-bottom: 6px
+                }
+                input {
+                    @include shadowComponent();
+                    margin-bottom: 15px;
+                    box-sizing: border-box;
+                    width:100%;
+                    height:35px;
+                    border-radius: 20px;
+                    padding:0px 20px 0px 20px;
+                    border: 0.5px solid $fontColorSecondary;
+                    &:focus {
+                        border: 2px solid $clickableComponentColor;
+                        outline: $clickableComponentColor;
+                    }
+                }
+                textarea {
+                    @include shadowComponent();
+                    box-sizing: border-box;
+                    width: 100%;
+                    padding: 10px;
+                    border-radius: 20px;
+                    &:focus {
+                        border: 2px solid $clickableComponentColor;
+                        outline: $clickableComponentColor;
+                    }
+                }
+                button {
+                    border: 0px;
+                    height:44px;
+                    width:100px;
+                    border-radius: 20px;
+                    background: $clickableComponentColor;
+                    color:white;
+                    font-weight: bold;
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
 }
 
 //==== FOOTER ===//
