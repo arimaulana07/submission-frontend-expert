@@ -19,51 +19,24 @@ const createRestaurantItemTemplate = (restaurant) => `
     </article>
 `;
 
-const createDetailRestaurantCategoriesTemplate = (restaurant) => {
-  const restaurantCategories = restaurant;
-  const categories = document.createElement('div');
-  categories.classList.add('categories');
-  restaurantCategories.forEach((category) => {
-    categories.innerHTML += `<span>${category.name}</span> `;
-  });
-  return categories.outerHTML;
-};
+// const createDetailRestaurantReviewsTemplate = (reviews) => {
+//   let reviewItem = '';
+//   reviews.forEach((review) => {
+//     reviewItem += `
+//         <div class="reviewItem">
+//             <h2 class="reviewerName"> ${review.name} </h2>
+//             <p class="review">
+//                 ${review.review}
+//             </p>
+//             <p class="reviewDate">
+//                 ${review.date}
+//             </p>
+//         </div>
+//     `;
+//   });
 
-const createDetailRestaurantMenuTemplate = (categoryMenu, listMenu) => {
-  const menus = document.createElement('ul');
-  listMenu.forEach((menu) => {
-    menus.innerHTML += `<li>${menu.name}</li>`;
-  });
-  const template = `
-  <div class="menus ${`${categoryMenu.toLowerCase()}Menu`}">
-    <div class="menuBtn">
-        <button>${categoryMenu}</button> <i class="icCollapse fa-solid fa-caret-down"></i>
-    </div>
-    <div class="itemMenu">
-        ${menus.outerHTML}
-    </div>
-  </div>`;
-  return template;
-};
-
-const createDetailRestaurantReviewsTemplate = (reviews) => {
-  let reviewItem = '';
-  reviews.forEach((review) => {
-    reviewItem += `
-        <div class="reviewItem">
-            <h2 class="reviewerName"> ${review.name} </h2>
-            <p class="review">
-                ${review.review}
-            </p>
-            <p class="reviewDate">
-                ${review.date}
-            </p>
-        </div>
-    `;
-  });
-
-  return reviewItem;
-};
+//   return reviewItem;
+// };
 
 const createDetailRestaurantReviewTemplate = (review) => {
   const reviewItem = `
@@ -91,7 +64,7 @@ const createRestaurantDetail = (restaurant) => `
     <div class="restaurantInfo">
         <h1 class="restaurantName">${restaurant.name}</h1>
         <p class="restaurantAddress"> <i class="fa-solid fa-location-dot"></i> ${restaurant.city}, ${restaurant.address}</p>
-        ${createDetailRestaurantCategoriesTemplate(restaurant.categories)}
+        <restaurant-categories></restaurant-categories>
     </div>
     <div class="restaurantContentWrapper">
         <div class="contentNavigation">
@@ -100,8 +73,8 @@ const createRestaurantDetail = (restaurant) => `
             <button class="contentNavItem reviewsButton" id="reviews">Reviews</button>
         </div>
         <div class="restaurantContent restaurantMenu">
-          ${createDetailRestaurantMenuTemplate('Foods', restaurant.menus.foods)}
-          ${createDetailRestaurantMenuTemplate('Drinks', restaurant.menus.drinks)}
+          <restaurant-menu class="menus foodsMenu"></restaurant-menu>
+          <restaurant-menu class="menus drinksMenu"></restaurant-menu>
         </div>
         <div class="restaurantContent restaurantDescription">
             <p class="description">
@@ -111,7 +84,7 @@ const createRestaurantDetail = (restaurant) => `
         <div class="restaurantContent restaurantReviews">
             
             <div class="reviewItemWrapper">
-              ${createDetailRestaurantReviewsTemplate(restaurant.customerReviews)}
+              <review-list></review-list>
             </div>
             <div class="writeReview">
                 <h3>Write your review here!</h3>

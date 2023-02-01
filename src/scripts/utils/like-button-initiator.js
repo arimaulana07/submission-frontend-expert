@@ -32,15 +32,6 @@ const LikeButtonInitiator = {
       this._renderButton();
     });
   },
-
-//   _renderLikeBtn(action, className) {
-//     this._likeButtonWrapper.innerHTML = createLikedButtonTemplate(className);
-//     const likeBtn = document.querySelector('.likeBtn');
-//     likeBtn.addEventListener('click', async () => {
-//       await FavoriteRestaurant[condition](this._restaurant.id);
-//       this._renderButton();
-//     });
-//   },
 };
 
 export default LikeButtonInitiator;

@@ -8,6 +8,7 @@ const app = new App({
   closeNav: document.querySelector('#closeNav'),
   navMenu: document.querySelector('.navMenu'),
   content: document.querySelector('main'),
+  hero: document.createElement('hero-component'),
 });
 
 window.addEventListener('hashchange', () => {

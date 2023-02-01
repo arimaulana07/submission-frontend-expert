@@ -1,9 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&display=swap");
 body {
   margin: 0;
-  padding: 0;
+  padding: 100px 0 100px 0;
+  min-height: 100vh;
   font-family: "Poppins", sans-serif;
   box-sizing: border-box;
+  position: relative;
 }
 
 a#skipToContent {
@@ -29,6 +31,7 @@ button {
   position: fixed;
   right: 15px;
   bottom: 15px;
+  z-index: 99;
 }
 
 button.likeBtn {
@@ -61,6 +64,7 @@ header nav {
   align-items: center;
   justify-content: center;
   position: fixed;
+  top: 0;
   background: white;
   z-index: 98;
 }
@@ -141,6 +145,20 @@ header nav .navMenu.open {
   width: 100%;
 }
 
+hero-component {
+  text-align: center;
+  display: block;
+  margin-bottom: 20px;
+}
+hero-component h2 {
+  color: black;
+  margin-bottom: 30px;
+  padding: 0px 15px 0px 15px;
+}
+hero-component img {
+  width: 100%;
+}
+
 main .listRestaurant {
   display: flex;
   flex-direction: column;
@@ -149,12 +167,12 @@ main .listRestaurant {
   padding-bottom: 10px;
   color: black;
   margin-top: -30px;
-  padding-top: 30px;
+  padding-top: 10px;
 }
 main .listRestaurant .itemWrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 main .listRestaurant .itemWrapper .item {
   width: 70%;
@@ -166,6 +184,7 @@ main .listRestaurant .itemWrapper .item {
   flex-direction: column;
   padding: 20px 20px 60px 20px;
   margin-bottom: 40px;
+  margin-right: 20px;
   box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
   -webkit-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
   -moz-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
@@ -217,6 +236,91 @@ main .listRestaurant .itemWrapper .item p.description {
   margin-bottom: 50px;
 }
 main .listRestaurant .itemWrapper .item a {
+  width: 100%;
+  height: 44px;
+  font-weight: bold;
+  border: 0;
+  border-radius: 0px 0px 20px 20px;
+  background: #A605AD;
+  color: white;
+  font-size: 14px;
+  letter-spacing: 2px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-decoration: none;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+main .listRestaurant restaurant-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+main .listRestaurant restaurant-list restaurant-item {
+  width: 70%;
+  height: auto;
+  background: white;
+  border-radius: 20px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  padding: 20px 20px 60px 20px;
+  margin-bottom: 40px;
+  margin-right: 20px;
+  box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  -webkit-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  -moz-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+}
+main .listRestaurant restaurant-list restaurant-item:hover {
+  box-shadow: 2px 3px 5px 0px #A605AD;
+  -webkit-box-shadow: 2px 3px 5px 0px #A605AD;
+  -moz-box-shadow: 2px 3px 5px 0px #A605AD;
+}
+main .listRestaurant restaurant-list restaurant-item .pictureRating {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+main .listRestaurant restaurant-list restaurant-item .pictureRating img {
+  width: 100%;
+  aspect-ratio: 1/0.7;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 20px;
+}
+main .listRestaurant restaurant-list restaurant-item .pictureRating .rating {
+  text-align: center;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  width: 120px;
+  height: 25px;
+  background: #FFA825;
+  border-radius: 20px 20px 0 0;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+main .listRestaurant restaurant-list restaurant-item h4 {
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+main .listRestaurant restaurant-list restaurant-item p {
+  margin: 0;
+  font-size: 11px;
+}
+main .listRestaurant restaurant-list restaurant-item p.description {
+  font-size: 13px;
+  margin-top: 12px;
+  line-height: 17px;
+  margin-bottom: 50px;
+}
+main .listRestaurant restaurant-list restaurant-item a {
   width: 100%;
   height: 44px;
   font-weight: bold;
@@ -310,7 +414,7 @@ main .popupMenuWrapper.open {
 }
 
 .restaurantDetail {
-  padding: 110px 19px 30px 19px;
+  padding: 10px 19px 30px 19px;
   height: auto;
 }
 .restaurantDetail .pictureRating {
@@ -353,10 +457,11 @@ main .popupMenuWrapper.open {
   margin: 0;
   padding: 0;
 }
-.restaurantDetail .restaurantInfo .categories {
+.restaurantDetail .restaurantInfo restaurant-categories {
+  display: block;
   margin-top: 15px;
 }
-.restaurantDetail .restaurantInfo .categories span {
+.restaurantDetail .restaurantInfo restaurant-categories span {
   border: 0.4px solid #B2B2B2;
   padding: 5px 12px;
   border-radius: 20px;
@@ -421,6 +526,7 @@ main .popupMenuWrapper.open {
   height: 40px;
   transition: all 0.1s ease-in-out;
   position: relative;
+  display: block;
 }
 .restaurantDetail .restaurantContentWrapper .restaurantMenu .menus:hover {
   box-shadow: 2px 3px 5px 0px #A605AD;
@@ -512,6 +618,33 @@ main .popupMenuWrapper.open {
   right: 12px;
   bottom: 0;
 }
+.restaurantDetail .restaurantContentWrapper .restaurantReviews review-item {
+  box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  -webkit-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  -moz-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  display: block;
+  padding: 24px;
+  border: 0.5px solid black;
+  border-radius: 20px;
+  position: relative;
+  min-height: 155px;
+  margin-bottom: 20px;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantReviews review-item:hover {
+  box-shadow: 2px 3px 5px 0px #A605AD;
+  -webkit-box-shadow: 2px 3px 5px 0px #A605AD;
+  -moz-box-shadow: 2px 3px 5px 0px #A605AD;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantReviews review-item h2 {
+  margin: 0;
+}
+.restaurantDetail .restaurantContentWrapper .restaurantReviews review-item p.reviewDate {
+  font-size: 12px;
+  color: #B2B2B2;
+  position: absolute;
+  right: 12px;
+  bottom: 0;
+}
 .restaurantDetail .restaurantContentWrapper .restaurantReviews .writeReview {
   margin-top: 45px;
 }
@@ -575,6 +708,9 @@ footer {
   background: #FFA825;
   padding-top: 10px;
   padding-bottom: 20px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 footer p {
   margin: 0;
@@ -646,6 +782,9 @@ footer p {
   main .listRestaurant .itemWrapper .item {
     width: 38%;
   }
+  main .listRestaurant restaurant-list restaurant-item {
+    width: 38%;
+  }
 }
 @media screen and (min-width: 1200px) {
   .hero {
@@ -660,10 +799,28 @@ footer p {
        object-fit: cover;
     aspect-ratio: 1/0.3;
   }
+  hero-component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  hero-component img {
+    min-width: 1000px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    aspect-ratio: 1/0.3;
+  }
   main .listRestaurant .itemWrapper {
     max-width: 1000px;
   }
   main .listRestaurant .itemWrapper .item {
+    width: 27%;
+  }
+  main .listRestaurant restaurant-list {
+    max-width: 1000px;
+  }
+  main .listRestaurant restaurant-list restaurant-item {
     width: 27%;
   }
 }/*# sourceMappingURL=main.css.map */

@@ -3,6 +3,10 @@ import RestaurantResource from '../../data/restaurant-source';
 import UrlParser from '../../routes/url-parser';
 import PostNewReview from '../../utils/post-new-review';
 import LikeButtonInitiator from '../../utils/like-button-initiator';
+import '../../components/restaurant-categories';
+import '../../components/restaurant-menu';
+import '../../components/review-list';
+import '../../components/review-item';
 import { createRestaurantDetail, createLikeButtonTemplate } from '../templates/template-creator';
 
 const Detail = {
@@ -18,15 +22,31 @@ const Detail = {
     const restaurant = await RestaurantResource.detailRestaurant(url.id);
     const restaurantContainer = document.querySelector('#restaurantDetail');
     restaurantContainer.innerHTML += createRestaurantDetail(restaurant);
+
     document.querySelector('.likeBtnWrapper').innerHTML += createLikeButtonTemplate();
     LikeButtonInitiator.init({
       likeButtonWrapper: document.querySelector('.likeBtnWrapper'),
       restaurant,
     });
-    // const favButton = document.querySelector('.favButton');
-    // const icLove = document.querySelector('.favButton > i');
-    // favButton.addEventListener('click', (e) => e.target.classList.toggle('favorited'));
-    // icLove.addEventListener('click', () => favButton.classList.toggle('favorited'));
+
+    PostNewReview.init({
+      formSubmit: document.querySelector('#formSubmit'),
+      id: url.id,
+      reviewList: document.querySelector('review-list'),
+    });
+
+    const RestaurantCategories = document.querySelector('restaurant-categories');
+    RestaurantCategories.categories = restaurant.categories;
+
+    const foodsMenu = document.querySelector('.foodsMenu');
+    foodsMenu.menus = { menuCategory: 'Foods', listMenu: restaurant.menus.foods };
+
+    const drinksMenu = document.querySelector('.drinksMenu');
+    drinksMenu.menus = { menuCategory: 'Drinks', listMenu: restaurant.menus.drinks };
+
+    const reviewList = document.querySelector('review-list');
+    reviewList.reviews = restaurant.customerReviews;
+
     const contentShow = (content) => {
       const restaurantContents = document.querySelectorAll('.restaurantContent');
       restaurantContents.forEach((restaurantContent) => {
@@ -42,23 +62,6 @@ const Detail = {
       }
     };
 
-    const collapseElement = (className) => {
-      console.log('clicked');
-      const icCollapse = className.querySelector('.icCollapse');
-      const itemMenu = className.querySelector('.itemMenu');
-      className.classList.toggle('active');
-      const originHeight = 40;
-      if (className.clientHeight <= 90) {
-        className.style.height = `${itemMenu.scrollHeight + 60}px`;
-        icCollapse.classList.remove('fa-caret-down');
-        icCollapse.classList.add('fa-caret-up');
-      } else {
-        className.style.height = `${originHeight}px`;
-        icCollapse.classList.remove('fa-caret-up');
-        icCollapse.classList.add('fa-caret-down');
-      }
-    };
-
     const contentNavItems = document.querySelectorAll('.contentNavItem');
     contentNavItems.forEach((navItem) => {
       navItem.addEventListener('click', (e) => {
@@ -66,18 +69,6 @@ const Detail = {
         e.target.classList.add('active');
         contentShow(e.target.id);
       });
-    });
-
-    const foodsMenu = document.querySelector('.foodsMenu');
-    foodsMenu.addEventListener('click', () => collapseElement(foodsMenu));
-
-    const drinksMenu = document.querySelector('.drinksMenu');
-    drinksMenu.addEventListener('click', () => collapseElement(drinksMenu));
-
-    PostNewReview.init({
-      formSubmit: document.querySelector('#formSubmit'),
-      id: url.id,
-      reviewWrapper: document.querySelector('.reviewItemWrapper'),
     });
   },
 };

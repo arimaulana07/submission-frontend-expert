@@ -1,10 +1,10 @@
 import RestaurantResource from '../data/restaurant-source';
-import { createDetailRestaurantReviewTemplate } from '../views/templates/template-creator';
+// import { createDetailRestaurantReviewTemplate } from '../views/templates/template-creator';
 
 const PostNewReview = {
-  async init({ formSubmit, id, reviewWrapper }) {
+  async init({ formSubmit, id, reviewList }) {
     this._formSubmit = formSubmit;
-    this._reviewWrapper = reviewWrapper;
+    this._reviewList = reviewList;
     this._id = id;
     await this._postReview();
   },
@@ -20,6 +20,7 @@ const PostNewReview = {
       const reviewResponse = await RestaurantResource.postReview(review);
       if (!reviewResponse.error) {
         this._renderNewPost(reviewResponse);
+        this._formSubmit.reset();
         console.log('success', reviewResponse);
       } else {
         console.log('error', reviewResponse);
@@ -28,9 +29,10 @@ const PostNewReview = {
   },
 
   _renderNewPost(review) {
-    const lastReview = review.customerReviews[review.customerReviews.length - 1];
-    const newReview = createDetailRestaurantReviewTemplate(lastReview);
-    this._reviewWrapper.innerHTML += newReview;
+    const newReview = review.customerReviews[review.customerReviews.length - 1];
+    const renderNewReview = document.querySelector('review-item');
+    renderNewReview.review = newReview;
+    this._reviewList.appendChild(renderNewReview);
   },
 };
 
