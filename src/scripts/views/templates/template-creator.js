@@ -1,59 +1,6 @@
 /* eslint-disable max-len */
 import CONFIG from '../../globals/config';
 
-const createRestaurantItemTemplate = (restaurant) => `
-    <article class="item" tabindex="0" >
-    <div class="pictureRating">
-        <img src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name} restaurant">
-        <div class="rating">
-        <i class="fa-solid fa-star"></i>&nbsp; ${restaurant.rating}
-        </div>
-    </div>
-    <h4>
-        ${restaurant.name}
-    </h4>
-    <p>
-        <i class="fa-solid fa-location-dot"></i> ${restaurant.city}
-    </p>
-    <a href="/#/detail/${restaurant.id}" id="${restaurant.id}" class="btnMenu">DETAIL</a>
-    </article>
-`;
-
-// const createDetailRestaurantReviewsTemplate = (reviews) => {
-//   let reviewItem = '';
-//   reviews.forEach((review) => {
-//     reviewItem += `
-//         <div class="reviewItem">
-//             <h2 class="reviewerName"> ${review.name} </h2>
-//             <p class="review">
-//                 ${review.review}
-//             </p>
-//             <p class="reviewDate">
-//                 ${review.date}
-//             </p>
-//         </div>
-//     `;
-//   });
-
-//   return reviewItem;
-// };
-
-const createDetailRestaurantReviewTemplate = (review) => {
-  const reviewItem = `
-    <div class="reviewItem">
-        <h2 class="reviewerName"> ${review.name} </h2>
-        <p class="review">
-            ${review.review}
-        </p>
-        <p class="reviewDate">
-            ${review.date}
-        </p>
-    </div>
-  `;
-
-  return reviewItem;
-};
-
 const createRestaurantDetail = (restaurant) => `
     <div class="pictureRating">
         <img src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="picture">
@@ -112,7 +59,5 @@ const createLikeButtonTemplate = (className) => `
 
 export {
   createRestaurantDetail,
-  createRestaurantItemTemplate,
-  createDetailRestaurantReviewTemplate,
   createLikeButtonTemplate,
 };

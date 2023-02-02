@@ -1,5 +1,6 @@
 import FavoriteRestaurant from '../data/favorite-restaurant';
 import { createLikeButtonTemplate } from '../views/templates/template-creator';
+import Loading from './loading-screen';
 
 const LikeButtonInitiator = {
   async init({ likeButtonWrapper, restaurant }) {
@@ -28,7 +29,10 @@ const LikeButtonInitiator = {
     this._likeButtonWrapper.innerHTML = createLikeButtonTemplate(className);
     const likeBtn = document.querySelector('.likeBtn');
     likeBtn.addEventListener('click', async () => {
+      Loading.init({ template: 'dualRing' });
+      Loading._startLoading();
       await FavoriteRestaurant[action](data);
+      Loading._stopLoading();
       this._renderButton();
     });
   },

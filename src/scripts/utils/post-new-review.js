@@ -1,4 +1,5 @@
 import RestaurantResource from '../data/restaurant-source';
+import Loading from './loading-screen';
 // import { createDetailRestaurantReviewTemplate } from '../views/templates/template-creator';
 
 const PostNewReview = {
@@ -17,12 +18,16 @@ const PostNewReview = {
         name: document.querySelector('#name').value,
         review: document.querySelector('#reviewText').value,
       };
+      Loading.init({ template: 'ldsRing', customStyle: { prop: 'opacity', val: '0.4' } });
+      Loading._startLoading();
       const reviewResponse = await RestaurantResource.postReview(review);
       if (!reviewResponse.error) {
         this._renderNewPost(reviewResponse);
         this._formSubmit.reset();
+        Loading._stopLoading();
         console.log('success', reviewResponse);
       } else {
+        Loading._stopLoadingWithErrorPopup();
         console.log('error', reviewResponse);
       }
     });

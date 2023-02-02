@@ -1,5 +1,4 @@
 import FavoriteRestaurant from '../../data/favorite-restaurant';
-import { createRestaurantItemTemplate } from '../templates/template-creator';
 
 const Like = {
   async render() {
@@ -8,18 +7,15 @@ const Like = {
         <h2>
           Your Liked Restaurant
         </h2>
-        <div class="itemWrapper"></div>
+        <restaurant-list></restaurant-list>
     </section>
   `;
   },
 
   async afterRender() {
     const restaurants = await FavoriteRestaurant.getAllRestaurant();
-    const restaurantsContainer = document.querySelector('.itemWrapper');
-
-    restaurants.forEach((movie) => {
-      restaurantsContainer.innerHTML += createRestaurantItemTemplate(movie);
-    });
+    const listRestaurantsContainer = document.querySelector('restaurant-list');
+    listRestaurantsContainer.restaurants = restaurants;
   },
 };
 

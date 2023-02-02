@@ -20,6 +20,9 @@ const Detail = {
   async afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const restaurant = await RestaurantResource.detailRestaurant(url.id);
+    if (restaurant.error) {
+      throw new Error('Restaurant Not Found');
+    }
     const restaurantContainer = document.querySelector('#restaurantDetail');
     restaurantContainer.innerHTML += createRestaurantDetail(restaurant);
 

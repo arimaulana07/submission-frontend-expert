@@ -4,14 +4,6 @@ import '../../components/restaurant-list';
 
 const Homepage = {
   async render() {
-    // return `
-    //   <section id="listRestaurants" class="listRestaurant">
-    //     <h2>
-    //       Top List Restaurant
-    //     </h2>
-    //     <div class="itemWrapper"></div>
-    //   </section>
-    // `;
     return `
       <section id="listRestaurants" class="listRestaurant">
          <h2>
@@ -23,15 +15,16 @@ const Homepage = {
   },
 
   async afterRender() {
+    const createCustomTimeout = () => new Promise((resolve) => {
+      setTimeout(() => {
+        console.log('bla bla');
+        resolve();
+      }, 3000);
+    });
+    await createCustomTimeout();
     const restaurants = await RestaurantResource.listRestaurant();
-
     const listRestaurantsContainer = document.querySelector('restaurant-list');
     listRestaurantsContainer.restaurants = restaurants;
-
-    // const listRestaurantsContainer = document.querySelector('#listRestaurants > .itemWrapper');
-    // restaurants.forEach((restaurant) => {
-    //   listRestaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
-    // });
   },
 };
 

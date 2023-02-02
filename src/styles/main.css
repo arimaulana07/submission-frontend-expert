@@ -1,4 +1,151 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&display=swap");
+@import "~nprogress/nprogress.css";
+#nprogress .bar {
+  background: #A605AD !important;
+}
+
+.loading {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  z-index: 90;
+}
+.loading .lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.loading .lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #FFA825;
+  border-radius: 50%;
+  -webkit-animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+          animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #A605AD transparent transparent transparent;
+}
+.loading .lds-ring div:nth-child(1) {
+  -webkit-animation-delay: -0.45s;
+          animation-delay: -0.45s;
+}
+.loading .lds-ring div:nth-child(2) {
+  -webkit-animation-delay: -0.3s;
+          animation-delay: -0.3s;
+}
+.loading .lds-ring div:nth-child(3) {
+  -webkit-animation-delay: -0.15s;
+          animation-delay: -0.15s;
+}
+@-webkit-keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loading.hide {
+  display: none;
+}
+.loading .lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.loading .lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #A605AD transparent #FFA825 transparent;
+  -webkit-animation: lds-dual-ring 1.2s linear infinite;
+          animation: lds-dual-ring 1.2s linear infinite;
+}
+@-webkit-keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.errorPopupWrapper {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.384);
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+}
+.errorPopupWrapper .popupError {
+  box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  -webkit-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  -moz-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.errorPopupWrapper .popupError p {
+  font-size: 15px;
+  font-weight: bold;
+}
+.errorPopupWrapper .popupError button {
+  box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  -webkit-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  -moz-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  border: 1px solid #A605AD;
+  background: white;
+  color: #A605AD;
+  font-weight: bold;
+  width: 100px;
+  height: 50px;
+  border-radius: 20px;
+}
+.errorPopupWrapper .popupError button:hover {
+  box-shadow: 2px 3px 5px 0px #A605AD;
+  -webkit-box-shadow: 2px 3px 5px 0px #A605AD;
+  -moz-box-shadow: 2px 3px 5px 0px #A605AD;
+}
+
 body {
   margin: 0;
   padding: 100px 0 100px 0;
@@ -159,6 +306,19 @@ hero-component img {
   width: 100%;
 }
 
+main .pageNotFound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+main .pageNotFound h1 {
+  color: #A605AD;
+}
 main .listRestaurant {
   display: flex;
   flex-direction: column;
@@ -764,15 +924,32 @@ footer p {
     height: 46px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
-  header nav .navMenuLarge ul li a:hover {
+  header nav .navMenuLarge ul li a:hover:after {
+    content: " ";
+    position: absolute;
+    width: 30px;
+    margin: 0 auto;
+    height: 3px;
+    bottom: 6px;
     background: #A605AD;
-    color: white;
+    border-radius: 50px;
   }
   header nav .navMenuLarge ul li a.active {
+    color: #A605AD;
+    font-weight: bold !important;
+  }
+  header nav .navMenuLarge ul li a.active:after {
+    content: " ";
+    position: absolute;
+    width: 30px;
+    margin: 0 auto;
+    height: 3px;
+    bottom: 6px;
     background: #A605AD;
-    color: #FFA825;
-    font-weight: 600;
+    border-radius: 50px;
   }
   header nav .navMenuLarge ul li.about {
     margin-right: 10px;
