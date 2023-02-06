@@ -1,5 +1,4 @@
 import RestaurantResource from '../../data/restaurant-source';
-// import { createRestaurantItemTemplate } from '../templates/template-creator';
 import '../../components/restaurant-list';
 
 const Homepage = {
@@ -17,7 +16,7 @@ const Homepage = {
   async afterRender() {
     const createCustomTimeout = () => new Promise((resolve) => {
       setTimeout(() => {
-        console.log('bla bla');
+        console.log('loading...');
         resolve();
       }, 3000);
     });

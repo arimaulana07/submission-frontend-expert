@@ -18,7 +18,7 @@ const PostNewReview = {
         name: document.querySelector('#name').value,
         review: document.querySelector('#reviewText').value,
       };
-      Loading.init({ template: 'ldsRing', customStyle: { prop: 'opacity', val: '0.4' } });
+      Loading.init({ template: 'ldsRing' });
       Loading._startLoading();
       const reviewResponse = await RestaurantResource.postReview(review);
       if (!reviewResponse.error) {
@@ -35,8 +35,9 @@ const PostNewReview = {
 
   _renderNewPost(review) {
     const newReview = review.customerReviews[review.customerReviews.length - 1];
-    const renderNewReview = document.querySelector('review-item');
+    const renderNewReview = document.createElement('review-item');
     renderNewReview.review = newReview;
+    console.log(renderNewReview);
     this._reviewList.appendChild(renderNewReview);
   },
 };

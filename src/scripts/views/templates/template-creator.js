@@ -15,24 +15,26 @@ const createRestaurantDetail = (restaurant) => `
     </div>
     <div class="restaurantContentWrapper">
         <div class="contentNavigation">
-            <button class="contentNavItem menuButton active" id="menu">Menu</button>
             <button class="contentNavItem descriptionButton" id="description">Description</button>
+            <button class="contentNavItem menuButton active" id="menu">Menu</button>
             <button class="contentNavItem reviewsButton" id="reviews">Reviews</button>
         </div>
-        <div class="restaurantContent restaurantMenu">
-          <restaurant-menu class="menus foodsMenu"></restaurant-menu>
-          <restaurant-menu class="menus drinksMenu"></restaurant-menu>
-        </div>
         <div class="restaurantContent restaurantDescription">
+            <h2>Description</h2>
             <p class="description">
               ${restaurant.description}
             </p>
         </div>
+        <div class="restaurantContent restaurantMenu">
+          <h2>Menu</h2>
+          <restaurant-menu class="menus foodsMenu"></restaurant-menu>
+          <restaurant-menu class="menus drinksMenu"></restaurant-menu>
+        </div>
         <div class="restaurantContent restaurantReviews">
             
-            <div class="reviewItemWrapper">
-              <review-list></review-list>
-            </div>
+            <h2>Reviews</h2>
+            <review-list></review-list>
+            
             <div class="writeReview">
                 <h3>Write your review here!</h3>
                 <form id="formSubmit" method="POST">

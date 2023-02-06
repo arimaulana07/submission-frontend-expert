@@ -234,6 +234,9 @@ header nav a {
 header nav .navMenuLarge {
   display: none;
 }
+header nav nav-menu-large {
+  display: none;
+}
 header nav .navMenu {
   width: 100%;
   height: auto;
@@ -626,6 +629,15 @@ main .popupMenuWrapper.open {
   padding: 5px 12px;
   border-radius: 20px;
 }
+.restaurantDetail .restaurantInfo .categories {
+  display: block;
+  margin-top: 15px;
+}
+.restaurantDetail .restaurantInfo .categories span {
+  border: 0.4px solid #B2B2B2;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
 .restaurantDetail .restaurantContentWrapper {
   margin-top: 15px;
   min-height: 500px;
@@ -670,6 +682,9 @@ main .popupMenuWrapper.open {
 .restaurantDetail .restaurantContentWrapper .restaurantContent {
   display: none;
 }
+.restaurantDetail .restaurantContentWrapper .restaurantContent h2 {
+  display: none;
+}
 .restaurantDetail .restaurantContentWrapper .restaurantMenu {
   display: block;
   margin-top: 20px;
@@ -678,8 +693,10 @@ main .popupMenuWrapper.open {
   box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
   -webkit-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
   -moz-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
-  margin-bottom: 20px;
-  border: 0.5px solid black;
+  background: hsl(279deg, 95%, 49%);
+  background: hsl(298deg, 49%, 49%);
+  background: linear-gradient(90deg, hsl(298deg, 49%, 49%) 34%, hsl(283deg, 54%, 51%) 100%);
+  background: -webkit-linear-gradient(90deg, hsl(298deg, 49%, 49%) 34%, hsl(283deg, 54%, 51%) 100%);
   border-radius: 20px;
   padding: 24px;
   overflow: hidden;
@@ -687,6 +704,7 @@ main .popupMenuWrapper.open {
   transition: all 0.1s ease-in-out;
   position: relative;
   display: block;
+  color: white;
 }
 .restaurantDetail .restaurantContentWrapper .restaurantMenu .menus:hover {
   box-shadow: 2px 3px 5px 0px #A605AD;
@@ -702,10 +720,11 @@ main .popupMenuWrapper.open {
   height: 40px;
   position: relative;
   font-size: 20px;
+  color: white;
   font-weight: bold;
 }
 .restaurantDetail .restaurantContentWrapper .restaurantMenu .menus i {
-  color: #A605AD;
+  color: white;
   position: absolute;
   right: 0;
   font-size: 20px;
@@ -731,8 +750,8 @@ main .popupMenuWrapper.open {
   padding: 0;
   margin-top: 5px;
 }
-.restaurantDetail .restaurantContentWrapper .restaurantMenu .menus.active {
-  border: 0.5px solid #A605AD;
+.restaurantDetail .restaurantContentWrapper .restaurantMenu .menus.foodsMenu {
+  margin-bottom: 20px;
 }
 .restaurantDetail .restaurantContentWrapper .restaurantDescription p {
   box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
@@ -782,9 +801,11 @@ main .popupMenuWrapper.open {
   box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
   -webkit-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
   -moz-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
+  background: hsl(33deg, 100%, 53%);
+  background: linear-gradient(90deg, hsl(33deg, 100%, 53%) 0%, hsl(58deg, 100%, 68%) 100%);
+  background: -webkit-linear-gradient(90deg, hsl(33deg, 100%, 53%) 0%, hsl(58deg, 100%, 68%) 100%);
   display: block;
   padding: 24px;
-  border: 0.5px solid black;
   border-radius: 20px;
   position: relative;
   min-height: 155px;
@@ -800,7 +821,7 @@ main .popupMenuWrapper.open {
 }
 .restaurantDetail .restaurantContentWrapper .restaurantReviews review-item p.reviewDate {
   font-size: 12px;
-  color: #B2B2B2;
+  color: black;
   position: absolute;
   right: 12px;
   bottom: 0;
@@ -954,6 +975,99 @@ footer p {
   header nav .navMenuLarge ul li.about {
     margin-right: 10px;
   }
+  header nav nav-menu-large {
+    display: block;
+    position: absolute;
+    right: 0;
+  }
+  header nav nav-menu-large ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-height: 45px;
+  }
+  header nav nav-menu-large ul li {
+    margin-left: 10px;
+    min-height: 45px;
+  }
+  header nav nav-menu-large ul li a {
+    color: #A605AD;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 0px 18px 0px 18px;
+    border-radius: 25px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  header nav nav-menu-large ul li a:hover:after {
+    content: " ";
+    position: absolute;
+    width: 30px;
+    margin: 0 auto;
+    height: 3px;
+    bottom: 6px;
+    background: #A605AD;
+    border-radius: 50px;
+  }
+  header nav nav-menu-large ul li a.active {
+    color: #A605AD;
+    font-weight: bold !important;
+  }
+  header nav nav-menu-large ul li a.active:after {
+    content: " ";
+    position: absolute;
+    width: 30px;
+    margin: 0 auto;
+    height: 3px;
+    bottom: 6px;
+    background: #A605AD;
+    border-radius: 50px;
+  }
+  header nav nav-menu-large ul li.about {
+    margin-right: 10px;
+  }
+  .restaurantDetail .pictureRating img {
+    width: 490px;
+  }
+  .restaurantDetail .restaurantInfo p.restaurantAddress {
+    font-size: 16px;
+  }
+  .restaurantDetail .restaurantInfo span {
+    font-size: 14px;
+  }
+  .restaurantDetail .restaurantContentWrapper .contentNavigation {
+    display: none;
+  }
+  .restaurantDetail .restaurantContentWrapper .restaurantContent {
+    display: block;
+    margin-top: 25px;
+  }
+  .restaurantDetail .restaurantContentWrapper .restaurantContent h2 {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 17px;
+  }
+  .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantMenu {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantMenu h2 {
+    flex-basis: 100%;
+  }
+  .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantMenu ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantMenu ul li {
+    flex-basis: 50%;
+  }
+  .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantMenu restaurant-menu {
+    flex-basis: 100%;
+  }
 }
 @media screen and (min-width: 700px) {
   main .listRestaurant .itemWrapper .item {
@@ -961,6 +1075,66 @@ footer p {
   }
   main .listRestaurant restaurant-list restaurant-item {
     width: 38%;
+  }
+  main .restaurantDetail {
+    padding: 0px 40px 0px 40px;
+  }
+  main .restaurantDetail .restaurantContent restaurant-menu {
+    max-width: 700px;
+  }
+  main .restaurantDetail .restaurantContent.restaurantReviews {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  main .restaurantDetail .restaurantContent.restaurantReviews h2 {
+    flex-basis: 100%;
+  }
+  main .restaurantDetail .restaurantContent.restaurantReviews review-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  main .restaurantDetail .restaurantContent.restaurantReviews review-list review-item {
+    flex-basis: 300px;
+    margin-right: 15px;
+  }
+  main .restaurantDetail .restaurantContent.restaurantReviews .writeReview {
+    margin-top: 20px;
+    flex-basis: 100%;
+  }
+  main .restaurantDetail .restaurantContent.restaurantReviews .writeReview h3 {
+    margin-top: 0;
+  }
+  main .restaurantDetail .restaurantContent.restaurantReviews .writeReview label {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  main .restaurantDetail .restaurantContent.restaurantReviews .writeReview #name {
+    width: 660px;
+    height: 40px;
+  }
+  main .restaurantDetail .restaurantContent.restaurantReviews .writeReview #reviewText {
+    width: 660px;
+    height: 200px;
+  }
+}
+@media screen and (min-width: 1000px) {
+  main .restaurantDetail .restaurantContentWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  main .restaurantDetail .restaurantContent {
+    max-width: 1200px;
+  }
+  main .restaurantDetail .restaurantContent p.description {
+    border: 0;
+    padding: 0;
+    font-size: 16px;
+    box-shadow: none;
+  }
+  main .restaurantDetail .restaurantContent p.description:hover {
+    box-shadow: none;
   }
 }
 @media screen and (min-width: 1200px) {
@@ -999,5 +1173,17 @@ footer p {
   }
   main .listRestaurant restaurant-list restaurant-item {
     width: 27%;
+  }
+  main .restaurantDetail {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  main .restaurantDetail .pictureRating img {
+    width: 600px;
+  }
+  main .restaurantDetail .restaurantInfo {
+    width: 1180px;
   }
 }/*# sourceMappingURL=main.css.map */

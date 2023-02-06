@@ -10,9 +10,8 @@ const loadingTemplate = {
 };
 
 const Loading = {
-  init({ template, customStyle = false }) {
+  init({ template }) {
     this._template = loadingTemplate[template];
-    this._customStyle = customStyle;
     this._createLoadingTemplate();
   },
 
@@ -31,10 +30,6 @@ const Loading = {
     });
     NProgress.start();
     return templateLoading;
-  },
-
-  _applyCustomStyle() {
-    this._createLoadingTemplate.style[this._customStyle.prop] = this._customStyle.value;
   },
 
   _startLoading() {

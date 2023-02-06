@@ -23,6 +23,7 @@ const Detail = {
     if (restaurant.error) {
       throw new Error('Restaurant Not Found');
     }
+
     const restaurantContainer = document.querySelector('#restaurantDetail');
     restaurantContainer.innerHTML += createRestaurantDetail(restaurant);
 
@@ -56,9 +57,9 @@ const Detail = {
         restaurantContent.style.display = 'none';
       });
 
-      if (content === 'menu') {
+      if (content === 'description') {
         restaurantContents[0].style.display = 'block';
-      } else if (content === 'description') {
+      } else if (content === 'menu') {
         restaurantContents[1].style.display = 'block';
       } else {
         restaurantContents[2].style.display = 'block';

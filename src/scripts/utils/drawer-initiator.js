@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const DrawerInitiator = {
   init({
     openNav, closeNav, navMenu, content,
