@@ -29,8 +29,7 @@ class App {
 
     this._skipToContent.addEventListener('click', (e) => {
       e.preventDefault();
-      this._skipToContent.style.top = '-100px';
-      this._content.scrollIntoView();
+      document.querySelector('#mainContent').focus();
     });
   }
 
@@ -46,7 +45,11 @@ class App {
       Loading._stopLoading();
     } catch (e) {
       const page = routes.NotFound;
-      this._content.innerHTML = await page.render(e.message);
+      if (e.message === 'Failed to fetch') {
+        this._content.innerHTML = await page.render('Failed to load data from server, Please check your internet');
+      } else {
+        this._content.innerHTML = await page.render(e.message);
+      }
       Loading._stopLoading();
     }
   }

@@ -51,10 +51,20 @@ const Detail = {
     const reviewList = document.querySelector('review-list');
     reviewList.reviews = restaurant.customerReviews;
 
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= '600') {
+        const restaurantContents = document.querySelectorAll('.restaurantContent');
+        restaurantContents.forEach((restaurantContent) => {
+          restaurantContent.style.display = '';
+        });
+      }
+    });
+
     const contentShow = (content) => {
       const restaurantContents = document.querySelectorAll('.restaurantContent');
       restaurantContents.forEach((restaurantContent) => {
-        restaurantContent.style.display = 'none';
+        const _content = restaurantContent;
+        _content.style.display = 'none';
       });
 
       if (content === 'description') {

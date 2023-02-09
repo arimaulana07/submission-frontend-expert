@@ -15,6 +15,10 @@ const Like = {
   async afterRender() {
     const restaurants = await FavoriteRestaurant.getAllRestaurant();
     const listRestaurantsContainer = document.querySelector('restaurant-list');
+    if (restaurants.length < 1) {
+      listRestaurantsContainer.innerHTML += '<h3> You didn\'t have any favorite restaurant yet! </h3>';
+      return;
+    }
     listRestaurantsContainer.restaurants = restaurants;
   },
 };

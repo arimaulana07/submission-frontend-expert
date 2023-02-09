@@ -5,7 +5,6 @@ class RestaurantMenu extends HTMLElement {
   }
 
   collapseElement() {
-    console.log('clicked');
     const icCollapse = this.querySelector('.icCollapse');
     const itemMenu = this.querySelector('.itemMenu');
     this.classList.toggle('active');

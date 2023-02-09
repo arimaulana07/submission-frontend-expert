@@ -20,19 +20,19 @@ const createRestaurantDetail = (restaurant) => `
             <button class="contentNavItem reviewsButton" id="reviews">Reviews</button>
         </div>
         <div class="restaurantContent restaurantDescription">
-            <h2>Description</h2>
+            <h2 class="contentHeader">Description</h2>
             <p class="description">
               ${restaurant.description}
             </p>
         </div>
         <div class="restaurantContent restaurantMenu">
-          <h2>Menu</h2>
+          <h2 class="contentHeader">Menu</h2>
           <restaurant-menu class="menus foodsMenu"></restaurant-menu>
           <restaurant-menu class="menus drinksMenu"></restaurant-menu>
         </div>
         <div class="restaurantContent restaurantReviews">
             
-            <h2>Reviews</h2>
+            <h2 class="contentHeader">Reviews</h2>
             <review-list></review-list>
             
             <div class="writeReview">
@@ -44,7 +44,7 @@ const createRestaurantDetail = (restaurant) => `
                     </div>
                     <div class="reviewForm">
                         <label for="reviewText">Review</label>
-                        <textarea name="reviewText" id="reviewText" cols="30" rows="10"></textarea> 
+                        <textarea maxlength="50" name="reviewText" id="reviewText" cols="30" rows="10"></textarea> 
                     </div>
                     <button type="submit" class="btnSubmitReview">Submit</button>
                 </form>

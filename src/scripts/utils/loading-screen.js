@@ -34,7 +34,6 @@ const Loading = {
 
   _startLoading() {
     const body = document.querySelector('body');
-    console.log(this._createLoadingTemplate());
     body.appendChild(this._createLoadingTemplate());
   },
 

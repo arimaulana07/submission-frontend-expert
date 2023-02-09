@@ -14,13 +14,6 @@ const Homepage = {
   },
 
   async afterRender() {
-    const createCustomTimeout = () => new Promise((resolve) => {
-      setTimeout(() => {
-        console.log('loading...');
-        resolve();
-      }, 3000);
-    });
-    await createCustomTimeout();
     const restaurants = await RestaurantResource.listRestaurant();
     const listRestaurantsContainer = document.querySelector('restaurant-list');
     listRestaurantsContainer.restaurants = restaurants;

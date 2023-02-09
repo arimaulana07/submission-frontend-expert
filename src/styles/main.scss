@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&display=swap');
 @import "~nprogress/nprogress.css";
-$primaryColor: #45B3FC;
-$bgColor: #ceeafa;
-$secondaryColor: #0E3043;
 
 $clickableComponentColor: #A605AD;
 $yellowColor: #FFA825;
@@ -158,7 +155,7 @@ a#skipToContent {
   left: 20px;
   text-decoration: none;
   color:white;
-  background: $primaryColor;
+  background: $clickableComponentColor;
   z-index: 99;
   padding: 20px;
   &:focus {
@@ -228,8 +225,13 @@ header {
     }
     
     a {
-      color:$clickableComponentColor;
       text-decoration: none;  
+      span.house {
+        color:$clickableComponentColor;
+      }
+      span.ofFood {
+        color:$yellowColor;
+      }
     }
 
     .navMenuLarge {
@@ -289,22 +291,9 @@ header {
 }
 
 //==== HERO ===//
-.hero {
-  text-align: center;
-  padding-top: 100px;
-  h2 {
-    color: $fontColorPrimary;
-    margin-bottom: 30px;
-    padding: 0px 15px 0px 15px;
-  }
-  img {
-    width:100%;
-  }
-}
 
 hero-component {
   text-align: center;
-  // padding-top: 100px;
   display: block;
   margin-bottom: 20px;
   h2 {
@@ -342,90 +331,13 @@ main {
     color: $fontColorPrimary;
     margin-top: -30px;
     padding-top: 10px;
-    .itemWrapper {
-       display: flex;
-       flex-wrap: wrap;
-       justify-content: center;
-      .item {
-        width:70%;
-        height:auto;
-        background: white;
-        border-radius: 20px;
-        display: flex;
-        position: relative;
-        flex-direction: column;
-        padding:20px 20px 60px 20px;
-        margin-bottom: 40px;
-        margin-right: 20px;
-        @include shadowComponent();
-  
-        .pictureRating {
-          position: relative;
-          display: flex;
-          justify-content: center;
-          img {
-            width: 100%;
-            aspect-ratio: 1/0.7;
-            object-fit: cover;
-            border-radius: 20px;
-          }
-          
-          .rating {
-            text-align: center;
-            color:white;
-            position: absolute;
-            bottom:0;
-            width:120px;
-            height:25px;
-            background: $yellowColor;
-            border-radius: 20px 20px 0 0;
-            font-size: 11px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-          }
-        }
-        
-        h4 {
-          margin-top: 10px;
-          margin-bottom: 6px;
-        }
-        p {
-          margin: 0;
-          font-size: 11px;
-        }
-        p.description {
-          font-size:13px;
-          margin-top: 12px;
-          line-height: 17px;
-          margin-bottom: 50px;
-        }
-        a {
-          width:100%;
-          height: 44px;
-          font-weight: bold;
-          border: 0;
-          border-radius: 0px 0px 20px 20px;
-          background: $clickableComponentColor;
-          color:white;
-          font-size: 14px;
-          letter-spacing: 2px;
-          position: absolute;
-          bottom:0;
-          left:0;
-          text-decoration: none;
-          display: flex;
-          text-align: center;
-          justify-content: center;
-          align-items: center;
-        }
-      }
-    }
     restaurant-list {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      h3 {
+        color:$yellowColor;
+      }
      restaurant-item {
        width:70%;
        height:auto;
@@ -502,86 +414,6 @@ main {
        }
      }
    }
-  }
-
-  
-
-  //Popup
-  .popupMenuWrapper {
-    width: 100%;
-    height: 100vh;
-    z-index: 99;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: rgba(255, 255, 255, 0.575);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    .popupMenu {
-      width:80%;
-      height:80vh;
-      border-radius: 20px;
-      background: white;
-      position: relative;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.49);
-      -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.49);
-      -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.49);
-      .headerText {
-        position: absolute;
-        top:0;
-        width:100%;
-        background: $primaryColor;
-        border-radius: 20px 20px 0 0;
-        h3 {
-          text-align: center;
-          color:white;
-        }
-      }
-
-      .menuItemWrapper {
-        h4 {
-          color:$secondaryColor;
-          margin:0 0 20px 0;
-          text-align: center;
-        }
-        width:100%;
-        padding: 80px 20px 20px 20px;
-        .menuItem {
-          border-radius: 8px;
-          padding: 8px 15px 8px 15px;
-          background: #E8F7FF;
-          display: flex;
-          justify-content: space-between;
-          margin-bottom: 10px;
-          span {
-            font-size: 12px;
-            font-weight: 500;
-            color: $secondaryColor;
-          }
-        }
-      }
-      
-      button {
-        background: #FF1D4B;
-        border:0;
-        position: absolute;
-        bottom: 10px;
-        width:85%;
-        height: 44px;
-        color:white;
-        font-weight: bold;
-        font-size: 14px;
-        border-radius: 20px;
-      }
-    }
-  }
-
-  .popupMenuWrapper.open {
-    display: flex;
   }
 
 }
@@ -670,12 +502,10 @@ main {
                 justify-content: center;
                 align-items: center;
                 font-weight: bold;
-                // border-bottom:2px solid $fontColorSecondary;
                 position: relative;
                 &.active {
                     font-weight: 600;
                     color: $clickableComponentColor;
-                    // border-bottom:2px solid $clickableComponentColor;
                     &:after {
                         content:'';
                         width:58px;
@@ -697,13 +527,14 @@ main {
         }
         .restaurantContent {
             display: none;
-            h2 {
+            h2.contentHeader {
               display: none;
             }
         }
         .restaurantMenu {
             display: block;
             margin-top: 20px;
+            cursor: pointer;
             .menus {
                 @include shadowComponent();
                 background: hsla(279, 95%, 49%, 1);
@@ -711,7 +542,6 @@ main {
                 background: linear-gradient(90deg, hsla(298, 49%, 49%, 1) 34%, hsla(283, 54%, 51%, 1) 100%);
                 background: -moz-linear-gradient(90deg, hsla(298, 49%, 49%, 1) 34%, hsla(283, 54%, 51%, 1) 100%);
                 background: -webkit-linear-gradient(90deg, hsla(298, 49%, 49%, 1) 34%, hsla(283, 54%, 51%, 1) 100%);
-                // border: 0.5px solid black;
                 border-radius: 20px;
                 padding: 24px;
                 overflow: hidden;
@@ -726,7 +556,7 @@ main {
                     margin: 0;
                     display: flex;
                     align-items: center;
-                    height:40px;
+                    height:45px;
                     position: relative;
                     font-size: 20px;
                     color: white;
@@ -754,14 +584,10 @@ main {
                     padding: 20px;
                     padding-top: 0px;
                     li {
-                        // list-style: none;
                         margin: 0;
                         padding: 0;
                         margin-top: 5px;
                     }
-                }
-                &.active {
-                    // border: 0.5px solid $clickableComponentColor;
                 }
             }
             .menus.foodsMenu {
@@ -807,6 +633,7 @@ main {
                 background: -moz-linear-gradient(90deg, hsla(33, 100%, 53%, 1) 0%, hsla(58, 100%, 68%, 1) 100%);
                 background: -webkit-linear-gradient(90deg, hsla(33, 100%, 53%, 1) 0%, hsla(58, 100%, 68%, 1) 100%);
                 display: block;
+                position: relative;
                 padding: 24px;
                 border-radius: 20px;
                 position: relative;
@@ -836,7 +663,7 @@ main {
                     margin-bottom: 15px;
                     box-sizing: border-box;
                     width:100%;
-                    height:35px;
+                    height:44px;
                     border-radius: 20px;
                     padding:0px 20px 0px 20px;
                     border: 0.5px solid $fontColorSecondary;
@@ -1055,16 +882,17 @@ footer {
         display: none;
       }
       .restaurantContent {
-        display: block;
         margin-top: 25px;
-        h2{
+        h2.contentHeader{
           display: block;
           margin-top: 0;
           margin-bottom: 17px;
         }
       }
+      .restaurantContent.restaurantDescription {
+        display: block ;
+      }
       .restaurantContent.restaurantMenu{
-        // margin-top: 30px;
         display: flex;
         flex-wrap: wrap;
         h2 {
@@ -1081,6 +909,9 @@ footer {
           flex-basis:100%;
         }
       }
+      .restaurantContent.restaurantReviews {
+        display: block;
+      }
     }
   }
 }
@@ -1088,11 +919,6 @@ footer {
 @media screen and (min-width: 700px){
   main {
     .listRestaurant {
-      .itemWrapper {
-        .item {
-          width: 38%;
-        }
-      }
       restaurant-list {
         restaurant-item {
           width: 38%;
@@ -1102,48 +928,48 @@ footer {
 
     .restaurantDetail {
       padding:0px 40px 0px 40px;
-      .restaurantContent {
-        restaurant-menu {
-          max-width: 700px;
+      .restaurantContentWrapper{ 
+        .restaurantContent {
+          restaurant-menu {
+            max-width: 700px;
+          }
         }
-        
-      }
-      .restaurantContent.restaurantReviews {
-        display: flex;
-        flex-wrap: wrap;
-        h2 {
-          flex-basis: 100%;
-        }
-        review-list{
+        .restaurantContent.restaurantReviews {
           display: flex;
           flex-wrap: wrap;
-          width: 100%;
-          review-item {
-            flex-basis: 300px;
-            margin-right: 15px;
+          h2 {
+            flex-basis: 100%;
           }
-        }
-        .writeReview {
-          h3{
-            margin-top: 0;
+          review-list{
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            review-item {
+              flex-basis: 270px;
+              margin-right: 15px;
+            }
           }
-          label {
-            font-size: 16px;
-            font-weight: 500;
+          .writeReview {
+            h3{
+              margin-top: 0;
+            }
+            label {
+              font-size: 16px;
+              font-weight: 500;
+            }
+            #name {
+              width: 660px;
+              height:48px;
+            }
+            #reviewText {
+              width:660px;
+              height:200px;
+            }
+            margin-top: 20px;
+            flex-basis: 100%;
           }
-          #name {
-            width: 660px;
-            height:40px;
-          }
-          #reviewText {
-            width:660px;
-            height:200px;
-          }
-          margin-top: 20px;
-          flex-basis: 100%;
         }
       }
-
     }
   }
 }
@@ -1154,7 +980,7 @@ footer {
       .restaurantContentWrapper{
         display: flex;
         flex-direction: column;
-        align-items: center;
+        // align-items: center;
       }
       .restaurantContent {
         max-width: 1200px;
