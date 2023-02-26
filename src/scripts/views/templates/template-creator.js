@@ -53,8 +53,8 @@ const createRestaurantDetail = (restaurant) => `
     </div>
 `;
 
-const createLikeButtonTemplate = (className) => `
-    <button class="likeBtn ${className}">
+const createLikeButtonTemplate = (className, ariaLabel) => `
+    <button aria-label=${ariaLabel} id="likeBtn" class="likeBtn ${className}">
         <i class="fa-solid fa-heart favorited"></i> 
     </button>
 `;

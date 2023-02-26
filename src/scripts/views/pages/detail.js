@@ -1,8 +1,9 @@
 /* eslint-disable no-param-reassign */
 import RestaurantResource from '../../data/restaurant-source';
+import FavoriteRestaurant from '../../data/favorite-restaurant';
 import UrlParser from '../../routes/url-parser';
 import PostNewReview from '../../utils/post-new-review';
-import LikeButtonInitiator from '../../utils/like-button-initiator';
+import LikeButtonPresenter from '../../utils/like-button-presenter';
 import '../../components/restaurant-categories';
 import '../../components/restaurant-menu';
 import '../../components/review-list';
@@ -26,11 +27,11 @@ const Detail = {
 
     const restaurantContainer = document.querySelector('#restaurantDetail');
     restaurantContainer.innerHTML += createRestaurantDetail(restaurant);
-
     document.querySelector('.likeBtnWrapper').innerHTML += createLikeButtonTemplate();
-    LikeButtonInitiator.init({
+    LikeButtonPresenter.init({
       likeButtonWrapper: document.querySelector('.likeBtnWrapper'),
       restaurant,
+      FavoriteRestaurant,
     });
 
     PostNewReview.init({
