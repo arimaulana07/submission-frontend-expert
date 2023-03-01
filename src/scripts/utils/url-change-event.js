@@ -35,6 +35,7 @@ const urlChangeEvent = {
       likePage.classList.remove('active');
     }
   },
+
 };
 
 export default urlChangeEvent;

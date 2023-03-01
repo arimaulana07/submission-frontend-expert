@@ -79,6 +79,17 @@
   }
 }
 
+.skeletonLoading {
+  width: 100%;
+  position: absolute;
+  top: 100px;
+}
+
+@keyframes run {
+  100% {
+    background-position: -100% 0;
+  }
+}
 .errorPopupWrapper {
   display: flex;
   flex-direction: column;
@@ -126,7 +137,6 @@
 }
 
 body {
-  margin: 0;
   padding: 100px 0 100px 0;
   min-height: 100vh;
   font-family: "Poppins", sans-serif;
@@ -266,21 +276,31 @@ header nav .navMenu.open {
   top: 0;
 }
 
-hero-component {
+hero-component, .heroSkeleton {
   text-align: center;
   display: block;
   margin-bottom: 20px;
 }
-hero-component h2 {
+hero-component h2, .heroSkeleton h2 {
   color: black;
   margin-bottom: 30px;
   padding: 0px 15px 0px 15px;
 }
-hero-component img {
+hero-component img, hero-component .heroImgSkeleton, .heroSkeleton img, .heroSkeleton .heroImgSkeleton {
   width: 100%;
+  aspect-ratio: 1/0.5;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+hero-component .heroImgSkeleton, .heroSkeleton .heroImgSkeleton {
+  background: linear-gradient(120deg, #e5e5e5 30%, #f0f0f0 38%, #f0f0f0 40%, #e5e5e5 48%);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  animation: run 2s infinite;
+  aspect-ratio: 3/2;
 }
 
-main .pageNotFound {
+main .pageNotFound, body .pageNotFound {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -290,10 +310,10 @@ main .pageNotFound {
   top: 0;
   left: 0;
 }
-main .pageNotFound h1 {
+main .pageNotFound h1, body .pageNotFound h1 {
   color: #A605AD;
 }
-main .listRestaurant {
+main .listRestaurant, body .listRestaurant {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -303,15 +323,15 @@ main .listRestaurant {
   margin-top: -30px;
   padding-top: 10px;
 }
-main .listRestaurant restaurant-list {
+main .listRestaurant restaurant-list, body .listRestaurant restaurant-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-main .listRestaurant restaurant-list h3 {
+main .listRestaurant restaurant-list h3, body .listRestaurant restaurant-list h3 {
   color: #FFA825;
 }
-main .listRestaurant restaurant-list restaurant-item {
+main .listRestaurant restaurant-list restaurant-item, body .listRestaurant restaurant-list restaurant-item {
   width: 70%;
   height: auto;
   background: white;
@@ -326,28 +346,28 @@ main .listRestaurant restaurant-list restaurant-item {
   -webkit-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
   -moz-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
 }
-main .listRestaurant restaurant-list restaurant-item:hover {
+main .listRestaurant restaurant-list restaurant-item:hover, body .listRestaurant restaurant-list restaurant-item:hover {
   box-shadow: 2px 3px 5px 0px #A605AD;
   -webkit-box-shadow: 2px 3px 5px 0px #A605AD;
   -moz-box-shadow: 2px 3px 5px 0px #A605AD;
 }
-main .listRestaurant restaurant-list restaurant-item .pictureRating {
+main .listRestaurant restaurant-list restaurant-item .pictureRating, body .listRestaurant restaurant-list restaurant-item .pictureRating {
   position: relative;
   display: flex;
   justify-content: center;
 }
-main .listRestaurant restaurant-list restaurant-item .pictureRating img {
+main .listRestaurant restaurant-list restaurant-item .pictureRating img, body .listRestaurant restaurant-list restaurant-item .pictureRating img {
   width: 100%;
   aspect-ratio: 1/0.7;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 20px;
 }
-main .listRestaurant restaurant-list restaurant-item .pictureRating .rating {
+main .listRestaurant restaurant-list restaurant-item .pictureRating .rating, body .listRestaurant restaurant-list restaurant-item .pictureRating .rating {
   text-align: center;
   color: white;
   position: absolute;
-  bottom: 0;
+  bottom: 7px;
   width: 120px;
   height: 25px;
   background: #FFA825;
@@ -358,21 +378,21 @@ main .listRestaurant restaurant-list restaurant-item .pictureRating .rating {
   justify-content: center;
   font-weight: bold;
 }
-main .listRestaurant restaurant-list restaurant-item h4 {
+main .listRestaurant restaurant-list restaurant-item h4, body .listRestaurant restaurant-list restaurant-item h4 {
   margin-top: 10px;
   margin-bottom: 6px;
 }
-main .listRestaurant restaurant-list restaurant-item p {
+main .listRestaurant restaurant-list restaurant-item p, body .listRestaurant restaurant-list restaurant-item p {
   margin: 0;
   font-size: 11px;
 }
-main .listRestaurant restaurant-list restaurant-item p.description {
+main .listRestaurant restaurant-list restaurant-item p.description, body .listRestaurant restaurant-list restaurant-item p.description {
   font-size: 13px;
   margin-top: 12px;
   line-height: 17px;
   margin-bottom: 50px;
 }
-main .listRestaurant restaurant-list restaurant-item a {
+main .listRestaurant restaurant-list restaurant-item a, body .listRestaurant restaurant-list restaurant-item a {
   width: 100%;
   height: 44px;
   font-weight: bold;
@@ -390,6 +410,46 @@ main .listRestaurant restaurant-list restaurant-item a {
   text-align: center;
   justify-content: center;
   align-items: center;
+}
+main .listRestaurant .restaurantListSkeleton, body .listRestaurant .restaurantListSkeleton {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+main .listRestaurant .restaurantListSkeleton .restaurantItemSkeleton, body .listRestaurant .restaurantListSkeleton .restaurantItemSkeleton {
+  background: linear-gradient(120deg, #e5e5e5 30%, #f0f0f0 38%, #f0f0f0 40%, #e5e5e5 48%);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  animation: run 2s infinite;
+  width: 70%;
+  height: auto;
+  border-radius: 20px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  padding: 20px 20px 60px 20px;
+  margin-bottom: 40px;
+  margin-right: 20px;
+}
+main .listRestaurant .restaurantListSkeleton .restaurantItemSkeleton .pictureRating .imgSkeleton, body .listRestaurant .restaurantListSkeleton .restaurantItemSkeleton .pictureRating .imgSkeleton {
+  width: 100%;
+  aspect-ratio: 1/0.7;
+}
+main .listRestaurant .restaurantListSkeleton .restaurantItemSkeleton h4, body .listRestaurant .restaurantListSkeleton .restaurantItemSkeleton h4 {
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+main .listRestaurant .restaurantListSkeleton .restaurantItemSkeleton p, body .listRestaurant .restaurantListSkeleton .restaurantItemSkeleton p {
+  margin: 0;
+  font-size: 11px;
+}
+main .listRestaurant .restaurantListSkeleton .restaurantItemSkeleton .btnMenuSkeleton, body .listRestaurant .restaurantListSkeleton .restaurantItemSkeleton .btnMenuSkeleton {
+  width: 100%;
+  height: 44px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 .restaurantDetail {
@@ -510,10 +570,10 @@ main .listRestaurant restaurant-list restaurant-item a {
   box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
   -webkit-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
   -moz-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
-  background: hsl(279deg, 95%, 49%);
-  background: hsl(298deg, 49%, 49%);
-  background: linear-gradient(90deg, hsl(298deg, 49%, 49%) 34%, hsl(283deg, 54%, 51%) 100%);
-  background: -webkit-linear-gradient(90deg, hsl(298deg, 49%, 49%) 34%, hsl(283deg, 54%, 51%) 100%);
+  background: hsl(279, 95%, 49%);
+  background: hsl(298, 49%, 49%);
+  background: linear-gradient(90deg, hsl(298, 49%, 49%) 34%, hsl(283, 54%, 51%) 100%);
+  background: -webkit-linear-gradient(90deg, hsl(298, 49%, 49%) 34%, hsl(283, 54%, 51%) 100%);
   border-radius: 20px;
   padding: 24px;
   overflow: hidden;
@@ -618,9 +678,9 @@ main .listRestaurant restaurant-list restaurant-item a {
   box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
   -webkit-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
   -moz-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.49);
-  background: hsl(33deg, 100%, 53%);
-  background: linear-gradient(90deg, hsl(33deg, 100%, 53%) 0%, hsl(58deg, 100%, 68%) 100%);
-  background: -webkit-linear-gradient(90deg, hsl(33deg, 100%, 53%) 0%, hsl(58deg, 100%, 68%) 100%);
+  background: hsl(33, 100%, 53%);
+  background: linear-gradient(90deg, hsl(33, 100%, 53%) 0%, hsl(58, 100%, 68%) 100%);
+  background: -webkit-linear-gradient(90deg, hsl(33, 100%, 53%) 0%, hsl(58, 100%, 68%) 100%);
   display: block;
   position: relative;
   padding: 24px;
@@ -705,18 +765,17 @@ main .listRestaurant restaurant-list restaurant-item a {
 
 footer {
   background: #FFA825;
-  padding-top: 10px;
-  padding-bottom: 20px;
   position: absolute;
   bottom: 0;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
 }
-footer p {
-  margin: 0;
+footer span {
   color: white;
-  text-align: center;
-  font-size: 17px;
-  font-weight: 500;
+  font-size: 15px;
 }
 
 @media screen and (min-width: 500px) {
@@ -893,116 +952,104 @@ footer p {
   }
 }
 @media screen and (min-width: 700px) {
-  main .listRestaurant restaurant-list restaurant-item {
+  main .listRestaurant restaurant-list restaurant-item, main .listRestaurant restaurant-list .restaurantItemSkeleton, main .listRestaurant .restaurantListSkeleton restaurant-item, main .listRestaurant .restaurantListSkeleton .restaurantItemSkeleton, body .listRestaurant restaurant-list restaurant-item, body .listRestaurant restaurant-list .restaurantItemSkeleton, body .listRestaurant .restaurantListSkeleton restaurant-item, body .listRestaurant .restaurantListSkeleton .restaurantItemSkeleton {
     width: 38%;
   }
-  main .restaurantDetail {
+  main .restaurantDetail, body .restaurantDetail {
     padding: 0px 40px 0px 40px;
   }
-  main .restaurantDetail .restaurantContentWrapper .restaurantContent restaurant-menu {
+  main .restaurantDetail .restaurantContentWrapper .restaurantContent restaurant-menu, body .restaurantDetail .restaurantContentWrapper .restaurantContent restaurant-menu {
     max-width: 700px;
   }
-  main .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews {
+  main .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews, body .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews {
     display: flex;
     flex-wrap: wrap;
   }
-  main .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews h2 {
+  main .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews h2, body .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews h2 {
     flex-basis: 100%;
   }
-  main .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews review-list {
+  main .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews review-list, body .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews review-list {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
   }
-  main .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews review-list review-item {
+  main .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews review-list review-item, body .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews review-list review-item {
     flex-basis: 270px;
     margin-right: 15px;
   }
-  main .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews .writeReview {
+  main .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews .writeReview, body .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews .writeReview {
     margin-top: 20px;
     flex-basis: 100%;
   }
-  main .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews .writeReview h3 {
+  main .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews .writeReview h3, body .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews .writeReview h3 {
     margin-top: 0;
   }
-  main .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews .writeReview label {
+  main .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews .writeReview label, body .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews .writeReview label {
     font-size: 16px;
     font-weight: 500;
   }
-  main .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews .writeReview #name {
+  main .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews .writeReview #name, body .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews .writeReview #name {
     width: 660px;
     height: 48px;
   }
-  main .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews .writeReview #reviewText {
+  main .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews .writeReview #reviewText, body .restaurantDetail .restaurantContentWrapper .restaurantContent.restaurantReviews .writeReview #reviewText {
     width: 660px;
     height: 200px;
   }
 }
 @media screen and (min-width: 1000px) {
-  main .restaurantDetail .restaurantContentWrapper {
+  main .restaurantDetail .restaurantContentWrapper, body .restaurantDetail .restaurantContentWrapper {
     display: flex;
     flex-direction: column;
   }
-  main .restaurantDetail .restaurantContent {
+  main .restaurantDetail .restaurantContent, body .restaurantDetail .restaurantContent {
     max-width: 1200px;
   }
-  main .restaurantDetail .restaurantContent p.description {
+  main .restaurantDetail .restaurantContent p.description, body .restaurantDetail .restaurantContent p.description {
     border: 0;
     padding: 0;
     font-size: 16px;
     box-shadow: none;
   }
-  main .restaurantDetail .restaurantContent p.description:hover {
+  main .restaurantDetail .restaurantContent p.description:hover, body .restaurantDetail .restaurantContent p.description:hover {
     box-shadow: none;
   }
 }
 @media screen and (min-width: 1200px) {
-  .hero {
+  hero-component, .heroSkeleton {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
   }
-  .hero img {
-    min-width: 1000px;
+  hero-component img, hero-component .heroImgSkeleton, .heroSkeleton img, .heroSkeleton .heroImgSkeleton {
+    min-width: 1200px;
     -o-object-fit: cover;
        object-fit: cover;
     aspect-ratio: 1/0.3;
   }
-  hero-component {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-  hero-component img {
-    min-width: 1000px;
-    -o-object-fit: cover;
-       object-fit: cover;
-    aspect-ratio: 1/0.3;
-  }
-  main .listRestaurant .itemWrapper {
+  main .listRestaurant .itemWrapper, body .listRestaurant .itemWrapper {
     max-width: 1000px;
   }
-  main .listRestaurant .itemWrapper .item {
+  main .listRestaurant .itemWrapper .item, body .listRestaurant .itemWrapper .item {
     width: 27%;
   }
-  main .listRestaurant restaurant-list {
+  main .listRestaurant restaurant-list, main .listRestaurant .restaurantListSkeleton, body .listRestaurant restaurant-list, body .listRestaurant .restaurantListSkeleton {
     max-width: 1000px;
   }
-  main .listRestaurant restaurant-list restaurant-item {
+  main .listRestaurant restaurant-list restaurant-item, main .listRestaurant restaurant-list .restaurantItemSkeleton, main .listRestaurant .restaurantListSkeleton restaurant-item, main .listRestaurant .restaurantListSkeleton .restaurantItemSkeleton, body .listRestaurant restaurant-list restaurant-item, body .listRestaurant restaurant-list .restaurantItemSkeleton, body .listRestaurant .restaurantListSkeleton restaurant-item, body .listRestaurant .restaurantListSkeleton .restaurantItemSkeleton {
     width: 27%;
   }
-  main .restaurantDetail {
+  main .restaurantDetail, body .restaurantDetail {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
   }
-  main .restaurantDetail .pictureRating img {
+  main .restaurantDetail .pictureRating img, body .restaurantDetail .pictureRating img {
     width: 600px;
   }
-  main .restaurantDetail .restaurantInfo {
+  main .restaurantDetail .restaurantInfo, body .restaurantDetail .restaurantInfo {
     width: 1180px;
   }
 }/*# sourceMappingURL=main.css.map */

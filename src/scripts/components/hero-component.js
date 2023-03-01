@@ -8,7 +8,11 @@ class HeroComponent extends HTMLElement {
       <h2>
         A Place For All The Food Hunters
       </h2>
-      <img src="./images/heros/hero-image_2.jpg" alt="banner">
+      <picture>
+        <source media="(max-width: 600px)" srcset="./images/heros/hero-image_2-small.jpg">
+        <source media="(max-width: 800px)" srcset="./images/heros/hero-image_2-medium.jpg">
+        <img src="./images/heros/hero-image_2-large.jpg" alt="banner">
+      </picture>
     `;
   }
 }

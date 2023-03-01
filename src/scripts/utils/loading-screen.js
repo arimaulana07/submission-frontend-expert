@@ -1,11 +1,68 @@
+/* eslint-disable spaced-comment */
+/* eslint-disable key-spacing */
 import NProgress from 'nprogress';
 
+const showRestaurantSkeleton = (count) => {
+  let template = '';
+
+  for (let i = 0; i < count; i += 1) {
+    template += `
+      <div class="restaurantItemSkeleton">
+        <div class="pictureRating">
+          <div class="imgSkeleton"></div>
+        </div>
+        <h4>
+          &nbsp;
+        </h4>
+        <p>
+          &nbsp;
+        </p>
+        <div class="btnMenuSkeleton"> &nbsp; </div>
+      </div>
+    `;
+  }
+  return template;
+};
+
 const loadingTemplate = {
-  dualRing: `
-    <div class="lds-dual-ring"></div>
+  '/detail/:id': `
+    <div class="loading">
+      <div class="lds-dual-ring"></div>
+    </loading>
   `,
+
+  '/': `
+      <div class="heroSkeleton">
+        <h2>
+          A Place For All The Food Hunters
+        </h2>
+        <div class="heroImgSkeleton"></div>
+      </div>
+      <section id="listRestaurants" class="listRestaurant">
+        <h2>
+          Top List Restaurant
+        </h2>
+        <div class="restaurantListSkeleton">
+          ${showRestaurantSkeleton(6)}
+        </div>
+      </section>
+  `,
+
+  '/like': `
+    <section id="listRestaurants" class="listRestaurant">
+      <h2>
+        Your Liked Restaurant
+      </h2>
+      <div class="restaurantListSkeleton">
+          ${showRestaurantSkeleton(3)}
+      </div>
+    </section>
+  `,
+
   ldsRing: `
+  <div class="loading">
     <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+  </div>
   `,
 };
 
@@ -17,11 +74,8 @@ const Loading = {
 
   _createLoadingTemplate() {
     const templateLoading = document.createElement('div');
-    templateLoading.classList.add('loading');
+    templateLoading.classList.add('skeletonLoading');
     templateLoading.setAttribute('id', 'loading-screen');
-    if (this._customStyle) {
-      templateLoading.style.opacity = this._customStyle.val;
-    }
 
     templateLoading.innerHTML = this._template;
     NProgress.configure({
