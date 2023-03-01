@@ -34,9 +34,9 @@ class App {
   }
 
   async renderPage() {
-    Loading.init({ template: 'dualRing' });
-    Loading._startLoading();
     const url = UrlParser.parseActiveUrlWithCombiner();
+    Loading.init({ template: url });
+    Loading._startLoading();
     urlChangeEvent.url(url);
     try {
       const page = (routes[url] || routes.NotFound);

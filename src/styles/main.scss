@@ -17,6 +17,19 @@ $fontColorSecondary: #B2B2B2;
   }
 }
 
+@mixin shining {
+  background: linear-gradient(
+    120deg,
+    #e5e5e5 30%,
+    #f0f0f0 38%,
+    #f0f0f0 40%,
+    #e5e5e5 48%
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  animation: run 2s infinite;
+}
+
 #nprogress .bar{
   background: $clickableComponentColor !important;
 }
@@ -100,6 +113,32 @@ $fontColorSecondary: #B2B2B2;
   }
 }
 
+.skeletonLoading {
+  width: 100%;
+  position: absolute;
+  top: 100px;
+  
+}
+
+// .skeletonLoading .restaurantItemSkeleton {
+//   background: linear-gradient(
+//     120deg,
+//     #e5e5e5 30%,
+//     #f0f0f0 38%,
+//     #f0f0f0 40%,
+//     #e5e5e5 48%
+//   );
+//   background-size: 200% 100%;
+//   background-position: 100% 0;
+//   animation: run 2s infinite;
+// }
+
+@keyframes run {
+  100% {
+    background-position: -100% 0;
+  }
+}
+
 .errorPopupWrapper {
   display: flex;
   flex-direction: column;
@@ -140,8 +179,7 @@ $fontColorSecondary: #B2B2B2;
 }
 
 body{
-  margin:0;
-  padding: 100px 0 100px 0;
+  padding: 100px 0 0 0;
   min-height: 100vh;
   font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
@@ -292,7 +330,7 @@ header {
 
 //==== HERO ===//
 
-hero-component {
+hero-component, .heroSkeleton {
   text-align: center;
   display: block;
   margin-bottom: 20px;
@@ -301,13 +339,20 @@ hero-component {
     margin-bottom: 30px;
     padding: 0px 15px 0px 15px;
   }
-  img {
-    width:100%;
+  img, .heroImgSkeleton{
+    min-width: 400px;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .heroImgSkeleton {
+    @include shining();
+    aspect-ratio: 3/2;
   }
 }
 
 //==== MAIN ====//
-main {
+main, body {
   .pageNotFound {
     display: flex;
     justify-content: center;
@@ -366,7 +411,7 @@ main {
            text-align: center;
            color:white;
            position: absolute;
-           bottom:0;
+           bottom:7px;
            width:120px;
            height:25px;
            background: $yellowColor;
@@ -413,6 +458,50 @@ main {
          align-items: center;
        }
      }
+   }
+
+   .restaurantListSkeleton {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width:100%;
+      .restaurantItemSkeleton {
+        @include shining();
+        width:70%;
+        height:auto;
+        border-radius: 20px;
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        padding:20px 20px 60px 20px;
+        margin-bottom: 40px;
+        margin-right: 20px;
+
+        .pictureRating {
+          .imgSkeleton {
+            width: 100%;
+            aspect-ratio: 1/0.7;
+          }
+        }
+
+        h4 {
+          margin-top: 10px;
+          margin-bottom: 6px;
+        }
+
+        p {
+          margin: 0; 
+          font-size: 11px;
+        }
+
+        .btnMenuSkeleton {
+          width:100%;
+          height: 44px;
+          position: absolute;
+          bottom:0;
+          left:0;
+        }
+      }
    }
   }
 
@@ -701,17 +790,18 @@ main {
 //==== FOOTER ===//
 footer {
   background: $yellowColor;
-  padding-top: 10px;
-  padding-bottom: 20px;
-  position: absolute;
-  bottom:0;
-  width:100%;
-  p {
-    margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:40px;
+  // width:100%;
+  span {
+    // margin: 0;
     color:white;
-    text-align: center;
-    font-size: 17px;
-    font-weight: 500;
+    // text-align: center;
+    // padding:4px 0 4px 0;
+    // font-size: 17px;
+    // font-weight: 500;
   }
 }
 
@@ -917,13 +1007,25 @@ footer {
 }
 
 @media screen and (min-width: 700px){
-  main {
+  hero-component, .heroSkeleton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+    img, .heroImgSkeleton{
+      min-width: 1200px;
+      object-fit: cover;
+      height: 400px;
+    }
+  }
+  main, body {
     .listRestaurant {
-      restaurant-list {
-        restaurant-item {
+      restaurant-list, .restaurantListSkeleton {
+        restaurant-item, .restaurantItemSkeleton {
           width: 38%;
         }
       }
+      
     }
 
     .restaurantDetail {
@@ -975,7 +1077,18 @@ footer {
 }
 
 @media screen and (min-width: 1000px) {
-  main {
+  hero-component, .heroSkeleton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+    img, .heroImgSkeleton{
+      min-width: 1200px;
+      object-fit: cover;
+      height: 400px;
+    }
+  }
+  main, body {
     .restaurantDetail {
       .restaurantContentWrapper{
         display: flex;
@@ -1000,31 +1113,31 @@ footer {
 }
 
 @media screen and (min-width: 1200px) {
-  .hero {
+  // .hero{
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  //   width:100%;
+  //   img{
+  //     min-width: 1000px;
+  //     object-fit: cover;
+  //     aspect-ratio: 1/0.3;
+  //   }
+  // }
+
+  hero-component, .heroSkeleton {
     display: flex;
     flex-direction: column;
     align-items: center;
     width:100%;
-    img{
-      min-width: 1000px;
+    img, .heroImgSkeleton{
+      min-width: 1200px;
       object-fit: cover;
-      aspect-ratio: 1/0.3;
+      height: 400px;
     }
   }
 
-  hero-component {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width:100%;
-    img{
-      min-width: 1000px;
-      object-fit: cover;
-      aspect-ratio: 1/0.3;
-    }
-  }
-
-  main {
+  main, body {
     .listRestaurant {
       .itemWrapper {
         max-width: 1000px;
@@ -1032,9 +1145,9 @@ footer {
           width: 27%;
         }
       }
-      restaurant-list {
+      restaurant-list, .restaurantListSkeleton{
         max-width: 1000px;
-        restaurant-item {
+        restaurant-item, .restaurantItemSkeleton {
           width: 27%;
         }
       }

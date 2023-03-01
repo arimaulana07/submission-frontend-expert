@@ -3,7 +3,7 @@ import CONFIG from '../../globals/config';
 
 const createRestaurantDetail = (restaurant) => `
     <div class="pictureRating">
-        <img src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="picture">
+        <img src="${CONFIG.BASE_IMAGE_URL_MEDIUM + restaurant.pictureId}" alt="picture">
         <div class="rating">
             <i class="fa-solid fa-star"></i>&nbsp; ${restaurant.rating}
         </div>
