@@ -5,14 +5,13 @@ Feature('Posting New Review');
 
 Before(({ I }) => {
   I.amOnPage('/');
-});
-
-Scenario('Submit new review with empty name field and empty review text field should showing error popup', async ({ I }) => {
-  I.waitForElement('restaurant-item a', 5);
+  I.wait(3);
   I.seeElement('restaurant-item a');
   const firstRestaurant = locate('restaurant-item a').first();
   I.click(firstRestaurant);
+});
 
+Scenario('Submit new review with empty name field and empty review text field should showing error popup', async ({ I }) => {
   I.waitForElement('#name', 3);
   I.seeElement('#name');
   I.fillField('#name', '');
@@ -28,11 +27,6 @@ Scenario('Submit new review with empty name field and empty review text field sh
 });
 
 Scenario('Submit new review with empty name field should showing error popup', async ({ I }) => {
-  I.waitForElement('restaurant-item a', 5);
-  I.seeElement('restaurant-item a');
-  const firstRestaurant = locate('restaurant-item a').first();
-  I.click(firstRestaurant);
-
   I.waitForElement('#name', 3);
   I.seeElement('#name');
   I.fillField('#name', '');
@@ -48,11 +42,6 @@ Scenario('Submit new review with empty name field should showing error popup', a
 });
 
 Scenario('Submit new review with empty text review field should showing error popup', async ({ I }) => {
-  I.waitForElement('restaurant-item a', 5);
-  I.seeElement('restaurant-item a');
-  const firstRestaurant = locate('restaurant-item a').first();
-  I.click(firstRestaurant);
-
   I.waitForElement('#name', 3);
   I.seeElement('#name');
   I.fillField('#name', 'Ari Maulana');
@@ -68,11 +57,6 @@ Scenario('Submit new review with empty text review field should showing error po
 });
 
 Scenario('Submitting New Review', async ({ I }) => {
-  I.waitForElement('restaurant-item a', 5);
-  I.seeElement('restaurant-item a');
-  const firstRestaurant = locate('restaurant-item a').first();
-  I.click(firstRestaurant);
-
   I.waitForElement('#name', 3);
   I.seeElement('#name');
   I.fillField('#name', 'Ari Maulana');

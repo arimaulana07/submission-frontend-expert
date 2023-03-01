@@ -15,7 +15,7 @@ Scenario('Liking one Restaurant', async ({ I }) => {
   I.see('You didn\'t have any favorite restaurant yet!', '.restaurantNotFound');
 
   I.amOnPage('/');
-  I.waitForElement('restaurant-item', 4);
+  I.wait(3);
 
   I.seeElement('restaurant-item a');
   const firstRestaurant = locate('restaurant-item a').first();
@@ -36,7 +36,7 @@ Scenario('Unliking one Restaurant', async ({ I }) => {
   I.see('You didn\'t have any favorite restaurant yet!', '.restaurantNotFound');
 
   I.amOnPage('/');
-  I.waitForElement('restaurant-item', 4);
+  I.wait(3);
 
   I.seeElement('restaurant-item a');
   const firstRestaurant = locate('restaurant-item a').first();

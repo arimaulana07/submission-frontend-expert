@@ -137,7 +137,7 @@
 }
 
 body {
-  padding: 100px 0 0 0;
+  padding: 100px 0 100px 0;
   min-height: 100vh;
   font-family: "Poppins", sans-serif;
   box-sizing: border-box;
@@ -287,8 +287,8 @@ hero-component h2, .heroSkeleton h2 {
   padding: 0px 15px 0px 15px;
 }
 hero-component img, hero-component .heroImgSkeleton, .heroSkeleton img, .heroSkeleton .heroImgSkeleton {
-  min-width: 400px;
-  height: 200px;
+  width: 100%;
+  aspect-ratio: 1/0.5;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -765,6 +765,9 @@ main .listRestaurant .restaurantListSkeleton .restaurantItemSkeleton .btnMenuSke
 
 footer {
   background: #FFA825;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -772,6 +775,7 @@ footer {
 }
 footer span {
   color: white;
+  font-size: 15px;
 }
 
 @media screen and (min-width: 500px) {
@@ -948,18 +952,6 @@ footer span {
   }
 }
 @media screen and (min-width: 700px) {
-  hero-component, .heroSkeleton {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-  hero-component img, hero-component .heroImgSkeleton, .heroSkeleton img, .heroSkeleton .heroImgSkeleton {
-    min-width: 1200px;
-    -o-object-fit: cover;
-       object-fit: cover;
-    height: 400px;
-  }
   main .listRestaurant restaurant-list restaurant-item, main .listRestaurant restaurant-list .restaurantItemSkeleton, main .listRestaurant .restaurantListSkeleton restaurant-item, main .listRestaurant .restaurantListSkeleton .restaurantItemSkeleton, body .listRestaurant restaurant-list restaurant-item, body .listRestaurant restaurant-list .restaurantItemSkeleton, body .listRestaurant .restaurantListSkeleton restaurant-item, body .listRestaurant .restaurantListSkeleton .restaurantItemSkeleton {
     width: 38%;
   }
@@ -1006,18 +998,6 @@ footer span {
   }
 }
 @media screen and (min-width: 1000px) {
-  hero-component, .heroSkeleton {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-  hero-component img, hero-component .heroImgSkeleton, .heroSkeleton img, .heroSkeleton .heroImgSkeleton {
-    min-width: 1200px;
-    -o-object-fit: cover;
-       object-fit: cover;
-    height: 400px;
-  }
   main .restaurantDetail .restaurantContentWrapper, body .restaurantDetail .restaurantContentWrapper {
     display: flex;
     flex-direction: column;
@@ -1046,7 +1026,7 @@ footer span {
     min-width: 1200px;
     -o-object-fit: cover;
        object-fit: cover;
-    height: 400px;
+    aspect-ratio: 1/0.3;
   }
   main .listRestaurant .itemWrapper, body .listRestaurant .itemWrapper {
     max-width: 1000px;
