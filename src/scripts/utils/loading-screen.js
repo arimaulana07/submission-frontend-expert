@@ -54,7 +54,7 @@ const loadingTemplate = {
         Your Liked Restaurant
       </h2>
       <div class="restaurantListSkeleton">
-          ${showRestaurantSkeleton(3)}
+          ${showRestaurantSkeleton(6)}
       </div>
     </section>
   `,
